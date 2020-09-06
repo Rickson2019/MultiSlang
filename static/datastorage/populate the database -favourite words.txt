@@ -1,0 +1,32 @@
+var adulte = db.collection("user").doc("q8wIjnkdRJu9t8tJP1yk").collection("favourite_words").doc("adulte");
+      adulte.set({
+        "english_meaning": "adult",
+        "english_explanation": "Biologically, an adult is a human or other organism that has reached sexual maturity.",
+        "french_explanation" :  "Dans son sens le plus général, un adulte est un individu biologiquement stable qui, ayant acquis sa maturité sexuelle, est susceptible de se reproduire. L'âge adulte est l'une des périodes de la vie.",
+      })
+
+var aeroport= db.collection("user").doc("q8wIjnkdRJu9t8tJP1yk").collection("favourite_words").doc("aéroport");
+      aeroport.set({
+        "english_meaning": "airport",
+        "english_explanation": "An airport is an aerodrome with extended facilities, mostly for commercial air transport.",
+        "french_explanation" :  "Un aéroport est l'ensemble des bâtiments et des installations qui servent au traitement des passagers ou du fret aérien situés sur un aérodrome. Le bâtiment principal est, généralement, l'aérogare par où transitent les passagers (ou le fret) entre les moyens de transport au sol et les avions.",
+      })
+      
+var agriculture=db.collection("user").doc("q8wIjnkdRJu9t8tJP1yk").collection("favourite_words").doc("agriculture");
+      agriculture.set({
+        "english_meaning": "agriculture",
+        
+      })
+      
+var agent_comptable= db.collection("user").doc("q8wIjnkdRJu9t8tJP1yk").collection("favourite_words").doc("agent comptable");
+      agent_comptable.set({
+        "english_meaning": "accountant",
+        "english_explanation": "An accountant is a practitioner of accounting or accountancy, which is the measurement, disclosure or provision of assurance about financial information that helps managers, investors, tax authorities and others make decisions about allocating resource(s).",
+       
+      })      
+
+var avion= db.collection("user").doc("q8wIjnkdRJu9t8tJP1yk").collection("favourite_words").doc("avion");
+      avion.set({
+        "english_meaning": "plane",
+     
+      })   

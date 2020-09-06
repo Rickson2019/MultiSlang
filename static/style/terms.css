@@ -1,0 +1,55 @@
+@import url(https://fonts.googleapis.com/css?family=Sniglet|Raleway:900);
+
+        nav {
+
+            font-family: 'Sniglet', cursive;
+        }
+
+        body {
+            background-image: linear-gradient(#ffff77, #ffffd4);
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+
+        h1 {
+            text-align: center;
+            color: #b36200;
+        }
+
+        h2 {
+
+            color: #b36200;
+        }
+
+        p {
+
+            color: #ff4c00;
+        }
+        
+
+        /* for 2000px or less */
+        @media screen and (max-width: 2000px) {
+
+            #overall {
+                margin-left: 70px;
+                margin-right: 70px;
+            }
+            nav {
+                text-align: center;
+            }
+        }
+
+        /* for 2000px or less */
+        @media screen and (max-width: 480px) {
+            nav {
+                text-align: left;
+            }
+            #overall {
+                margin-left: 30px;
+                margin-right: 30px;
+            }
+        }

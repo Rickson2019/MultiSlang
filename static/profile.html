@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>My Profile&amp;Settings</title>
+
+    <meta charset="UTF-8">
+    <!-- Bottstrap for navigation bar -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script>
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-firestore.js"></script>
+    <!--Authentication Sign in with a pre-built UI-->
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAUdGXmlceadWNG32LVOsPbmjdogYbXRcM",
+            authDomain: "francomobile-2.firebaseapp.com",
+            databaseURL: "https://francomobile-2.firebaseio.com",
+            projectId: "francomobile-2",
+            storageBucket: "francomobile-2.appspot.com",
+            messagingSenderId: "1084986255305",
+            appId: "1:1084986255305:web:37c28213577036cf866a18",
+            measurementId: "G-2G2SJ7YGJ8"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        // firebase.analytics();
+        // var st=firebase.initializeApp(firebaseConfig).storage();
+        var db = firebase.firestore();
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Style sheet associated with account page -->
+    <link rel="stylesheet" href="style/profile.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+
+  </style>
+</head>
+
+<body>
+
+    <!--Navbar-->
+    <nav class="navbar navbar-dark  indigo darken-2" style="background-color: #ffa500; margin: 10px;">
+
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="#" style="font-size: 25pt">Francomobile</a>
+
+      <!-- Collapse button -->
+      <button class="navbar-toggler third-button" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent22" aria-controls="navbarSupportedContent22" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <div class="animated-icon3"><span></span><span></span><span></span></div>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent22">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item active">
+            <a class="nav-link" href="./homepage.html" style="font-size: 20pt">Home Page<span class="sr-only">(current)</span></a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="./contact_us%20_afterlogin.html" style="font-size: 20pt">Need Help?</a>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link" id="logout" style="font-size: 20pt">Log Out</p>
+          </li>
+        </ul>
+
+      </div>
+
+    </nav>
+
+    <div id="profile">
+        <p>My Profile</p>
+    </div>
+
+    <!-- Profile picture -->
+
+
+    <div class="profile-picture">
+
+        <img src="./img/img_avatar.png" style="width: 100%">
+
+    </div>
+
+    <div id="speakerChoice">
+      <P>Choose a speaker for your studies</P>
+    <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-secondary announcers"  id="thomas">Thomas(Fr)</button>
+
+      <button type="button" class="btn btn-secondary announcers"  id="chloe">Chloe(Ca)</button>
+    </div>
+  </div>
+
+    <div class="main-container">
+
+<!--
+        <div class="fish" id="fish" style="margin-top:440px"></div>
+        <div class="fish" id="fish2" style="margin-top:440px"></div>
+        <div class="fish" id="fish3" style="margin-top:440px"></div>
+-->
+
+        <form id="myform">
+            <p id="name1">Name</p>
+
+            <input type="text" id="name" placeholder="Name">
+            <br>
+            
+            <p id="email1">Email</p>
+            <input type="text" id="email" placeholder="Email">
+            <br>
+
+            <p id="age1">Age</p>
+            <input type="text" id="age" placeholder="Age">
+            <br>
+            <p id="country1">Country of Residence</p>
+            <input type="text" id="country" placeholder="Country of residence">
+            <br>
+            <p id="gender1">Gender</p>
+            <input type="text" id="gender" placeholder="Gender">
+            <br>
+
+
+
+            <input type="submit" style="height: 60px">
+        </form>
+    </div>
+    <br>
+    <br>
+    <div>
+        <p style="font-family: sans-serif; text-align: center">© 2019 Francomobile</p>
+    </div>
+
+
+   
+
+    <script>
+        function setFormListener(form) {
+            document.getElementById("myform").addEventListener("submit", function (e) {
+                e.preventDefault();
+                var name = document.getElementById("name").value;
+
+
+
+                var email = document.getElementById("email").value;
+              
+                var age = document.getElementById("age").value;
+               
+                var country = document.getElementById("country").value;
+               
+                var gender = document.getElementById("gender").value;
+              
+                firebase.auth().onAuthStateChanged(function (user) {
+                    //write the answers, then generate recommendations
+                    console.log(user.uid);
+                    db.collection("user").doc(user.uid).set({
+                        "age": age,
+                        "country": country,
+                        "gender": gender,
+                        //            message: message,
+                        "name": name,
+                        "email": email
+
+                    }, {
+                        merge: true
+                    })
+
+                });
+            })
+        }
+    </script>
+    <!--
+     Other functions
+    <form>
+        <input type="submit" value="Check your favorite words" />
+    </form>
+
+    <form>
+        <input type="submit" id="logout" value="Log Out" />
+
+    </form>
+-->
+
+
+
+
+    <!--   Logout function -->
+    <script>
+        $("#logout").click(function () {
+            firebase.auth().signOut();
+            alert("Successfully logged out!");
+            console.log("Successfully logged out!");
+            window.location.href = './login.html';
+        })
+    </script>
+    <script>
+        // Read data from Firebase
+        // firebase.auth().onAuthStateChanged(function (user) {
+
+        //     db.collection('user').doc(user.uid).get().then(function (snap) {
+        //         if(document.getElementById("name").value!=="undefined")
+        //         document.getElementById("name").value = snap.data().name;
+        //         if(document.getElementById("age").value!=="undefined")
+        //         document.getElementById("age").value = snap.data().age;
+        //         if(document.getElementById("gender").value!=="undefined")
+        //         document.getElementById("gender").value = snap.data().gender;
+        //         if(document.getElementById("country").value!=="undefined")
+        //         document.getElementById("country").value = snap.data().country;
+        //         if(document.getElementById("email").value!=="undefined")
+        //         document.getElementById("email").value = snap.data().email;
+        //         $("#" + snap.data().speaker).css("background","blue");
+        //         document.getElementById("gender").style.color="black";
+        //         document.getElementById("email").style.color="black";
+        //         document.getElementById("country").style.color="black";
+        //         document.getElementById("age").style.color="black";
+        //         document.getElementById("name").style.color="black";
+        //     });
+        // });
+    </script>
+    <script>
+        //    createUser();
+        setFormListener("myform");
+
+        $(".announcers").on("click",function(e){
+         
+            $(".announcers").css("background","gray"); 
+            $(e.target).css("background","blue");
+            let announcer = e.target.id
+            console.log(announcer)
+          $.ajax({
+            type: "post",
+            url: "/user/changeAnnouncer",
+            data: {"announcer": announcer},
+            dataType: "json",
+            success: function (response) {
+              console.log(response)
+            }
+          });
+
+        })
+
+
+        $.ajax({
+          type: "GET",
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          url: "/user/getProfile",
+          success: function (response) {
+              console.log(response)
+              let announcer = response.announcer
+              let username  = response.username
+              let password  = response.password
+              let email = response.email
+              let phoneno = response.phoneno
+              let firstname = response.firstname
+              let lastname = response.lastname  
+              
+              $("#" + announcer).css("background","blue");
+          }
+        });
+       
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <!-- Navigation bar Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+           https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script>
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-firestore.js"></script>
+    <!--Authentication Sign in with a pre-built UI-->
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAUdGXmlceadWNG32LVOsPbmjdogYbXRcM",
+            authDomain: "francomobile-2.firebaseapp.com",
+            databaseURL: "https://francomobile-2.firebaseio.com",
+            projectId: "francomobile-2",
+            storageBucket: "francomobile-2.appspot.com",
+            messagingSenderId: "1084986255305",
+            appId: "1:1084986255305:web:37c28213577036cf866a18",
+            measurementId: "G-2G2SJ7YGJ8"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        // firebase.analytics();
+        // var st=firebase.initializeApp(firebaseConfig).storage();
+        var db = firebase.firestore();
+    </script>
+</head>
+
+<body>
+    <h1>Manage System</h1>
+    <div>
+        <p>Contact</p>
+
+    </div>
+
+    <div id="contactfeedback">
+       
+    </div>
+
+    <span>input the ID of the info to delete </span>
+    <input type="text" id='inputID'>
+    <button id="inputDel">
+        Delete This Info
+    </button>
+
+    <div id="bugReport">
+
+
+    </div>
+
+    <script>
+
+        var table = $("#contactfeedback");
+        var tbInfo;
+        var i = 1;
+        db.collection("contact_us").get().then(function (feedback) {
+            feedback.forEach(function (info) {
+                
+                tbInfo =  "<div id='" +  i + "'>" ;
+                tbInfo +=  "<table>";
+                tbInfo += "<tr><th>ID: " + i + "</th></tr>";
+                tbInfo += "<tr><th>cell</th>";
+                tbInfo += "<td>" + info.data().cell + "</td></tr>";
+                tbInfo += "<tr><th>email</th>";
+                tbInfo += "<td>" + info.data().email + "</td></tr>";
+                tbInfo += "<tr><th>name</th>";
+                tbInfo += "<td>" + info.data().name + "</td></tr>";
+                tbInfo +=  "</table>"
+                tbInfo += "<p>" + info.data().message +"</P>";
+                // tbInfo += "<button id='del"   + i + "' class='delete'>" +"remove this"+ "</button>";
+                tbInfo +=  "</div>"
+
+                $("#contactfeedback").append(tbInfo);
+                i++;
+            })
+        })
+// $(document).ready(function(){
+      
+//     document.getElementById("del1").addEventListener("click",function(){
+            
+        
+//             var i = (this.id);
+//             alert(i.substring(3));
+//             $("div[id$='"+i.substring(3)+"']").remove();
+//         })
+
+//         db.collection("bug").get().then(function (buggedWords){
+
+//         })
+// })
+$("#inputDel").click(function(){
+    var ID = document.getElementById("inputID").value;
+    
+    $("#"+ID).remove();
+})
+
+
+
+    </script>
+</body>
+
+</html>

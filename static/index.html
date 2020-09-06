@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Lilita+One&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Acme&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Special+Elite&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Fugaz+One&display=swap');
+
+    body {
+      background-color: white;
+      font-family: 'Hind', sans-serif;
+      font-size: 14pt;
+      margin: 0;
+    }
+
+
+
+
+    /* for 2000px or less */
+    @media screen and (max-width: 2000px) {
+
+      * {
+        font-size: 1.0rem;
+      }
+
+      #pagewrap {
+        width: 100%;
+      }
+
+      #header {
+        height: 900px;
+        background-image: url(img/french2.jpg);
+        background-size: cover;
+
+      }
+
+      #content {
+        width: 100%;
+        /*        float: left;s*/
+        text-align: center;
+        font-family: 'Special Elite', cursive;
+
+
+      }
+
+      #footer {
+        clear: both;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        text-align: center;
+        background-image: url(./img/cover1.jpg);
+        height: 70px;
+        background-size: cover;
+        color: azure;
+        font-family: 'Fugaz One', cursive;
+        padding: 5%;
+        font-size: 30pt;
+
+      }
+
+      #item1 {
+        grid-column: 1 / span 1;
+
+
+      }
+
+      #item2 {
+        grid-column: 2 / span 1;
+
+      }
+
+      #item3 {
+        grid-column: 3 / span 1;
+
+      }
+
+      .words {
+        font-size: 18pt;
+      }
+
+      #title {
+        font-size: 60pt;
+        margin: auto;
+        text-align: center;
+        /*          padding: 10%;*/
+        color: white;
+        text-shadow: 3px 3px 6px blue;
+        font-family: 'Lilita One', cursive;
+      }
+
+      #slogan {
+
+        /*font-family: 'Indie Flower', cursive;*/
+        font-family: 'Permanent Marker', cursive;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 75pt;
+        line-height: 1.6;
+
+        color: #FFFFFF;
+        text-align: center;
+
+      }
+
+
+      .submitButton {
+        border: none;
+        background-color: #E09BFD;
+        font-size: 16px;
+        cursor: pointer;
+        height: 50px;
+        width: 350px;
+        color: black;
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+        font-size: 15pt;
+        text-align: center;
+        font-family: 'Acme', sans-serif;
+
+        margin: auto;
+      }
+
+      .submitButton:hover {
+        color: white;
+      }
+
+      #wrapper {
+        text-align: center;
+      }
+
+
+
+    }
+
+    /* for 480px or less */
+    @media screen and (max-width: 480px) {
+      body {
+        margin: 0;
+        display: block;
+
+      }
+
+      #pagewrap {
+        height: 800px;
+        width: 100%;
+        /*          margin: 0;*/
+      }
+
+
+      #header {
+        height: 800px;
+        background-image: url(./img/Background.png);
+        background-size: cover;
+        width: 100%;
+
+      }
+
+      @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap');
+
+      #title {
+        font-size: 40pt;
+        text-align: center;
+        /*    margin: auto 10%;*/
+        /*        padding: 10%;*/
+        color: white;
+        text-shadow: 3px 3px 6px blue;
+        font-family: 'Libre Baskerville', serif;
+      }
+
+      #slogan {
+
+        font-family: 'Indie Flower', cursive;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 45pt;
+        line-height: 1.6;
+
+        color: #FFFFFF;
+        text-align: center;
+
+      }
+
+
+      .submitButton {
+        border: none;
+        background-color: #E09BFD;
+        font-size: 16px;
+        cursor: pointer;
+        height: 50px;
+        width: 350px;
+        color: black;
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+        font-size: 15pt;
+        text-align: center;
+        font-family: 'Acme', sans-serif;
+      }
+
+      .submitButton:hover {
+        color: white;
+      }
+
+      #wrapper {
+        text-align: center;
+      }
+
+      #footer {
+        clear: both;
+        display: grid;
+
+        grid-template-columns: 33.3% 33.3% 33.3%;
+        text-align: center;
+        background-image: url(./img/cover1.jpg);
+        height: 500px;
+        background-size: cover;
+        color: azure;
+        font-family: 'Fugaz One', cursive;
+
+      }
+
+      #item1 {
+
+        grid-column: 1 / span 1;
+
+      }
+
+      #item2 {
+
+        grid-column: 2 / span 1;
+
+      }
+
+      #item3 {
+
+        grid-column: 3 / span 1;
+
+      }
+
+
+
+      .words {
+        font-size: 15pt;
+      }
+
+      #content {
+        width: 100%;
+        float: left;
+        text-align: center;
+        font-family: 'Special Elite', cursive;
+
+
+      }
+
+      body {
+        padding: 0;
+        margin: auto 0;
+      }
+
+    }
+
+    /* for 400px or less */
+    @media screen and (max-width: 400px) {
+      body {
+        margin: 0;
+        display: block;
+
+      }
+
+      #pagewrap {
+        height: 800px;
+        width: 100%;
+        /*          margin: 0;*/
+      }
+
+
+      #header {
+        height: 800px;
+        background-image: url(./img/Background.png);
+        background-size: cover;
+        width: 100%;
+
+      }
+
+
+
+      #title {
+        font-size: 40pt;
+        text-align: center;
+        /*    margin: auto 10%;*/
+        /*        padding: 10%;*/
+        color: white;
+        text-shadow: 3px 3px 6px blue;
+        font-family: 'Lilita One', cursive;
+      }
+
+      #slogan {
+
+        font-family: 'Indie Flower', cursive;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 45pt;
+        line-height: 1.6;
+
+        color: #FFFFFF;
+        text-align: center;
+
+      }
+
+
+      .submitButton {
+        border: none;
+        background-color: #E09BFD;
+        font-size: 16px;
+        cursor: pointer;
+        height: 50px;
+        width: 300px;
+        color: black;
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+        font-size: 15pt;
+        text-align: center;
+        font-family: 'Acme', sans-serif;
+      }
+
+      .submitButton:hover {
+        color: white;
+      }
+
+      #wrapper {
+        text-align: center;
+      }
+
+      #footer {
+        clear: both;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 33.3% 33.3% 33.3%;
+        text-align: center;
+        background-image: url(./img/cover1.jpg);
+        height: 150px;
+        background-size: cover;
+        color: azure;
+        font-family: 'Fugaz One', cursive;
+
+      }
+
+      #item1 {
+
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+      }
+
+      #item2 {
+
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 1;
+      }
+
+      #item3 {
+
+        grid-column: 1 / span 1;
+        grid-row: 3 / span 1;
+      }
+
+
+
+
+      .words {
+        font-size: 13pt;
+      }
+
+      #content {
+        width: 100%;
+        float: left;
+        text-align: center;
+        font-family: 'Special Elite', cursive;
+
+
+      }
+
+      body {
+        padding: 0;
+        margin: auto 0;
+      }
+
+    }
+  </style>
+  <style>
+    a:link {
+      color: white;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: white;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: red;
+      background-color: transparent;
+      text-decoration: underline;
+    }
+
+    a:active {
+      color: yellow;
+      background-color: transparent;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="pagewrap">
+
+    <div id="header">
+
+      <p id="title">Francomobile</p>
+
+      <p id="slogan">Learn French by memorizing words
+        using pictures.</p>
+      <div id="wrapper">
+        <form action="./login.html">
+          <button class="submitButton" id="btn1">Getting Started</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="content">
+      <h2 style="font-family: 'Fredoka One', cursive; font-size: 30pt">About Our Project</h2>
+      <p style="font-size: 30pt">We are a group of language lovers</p>
+      <p style="font-size: 30pt">We hope this APP will help you learn a new language in your free time.</p>
+      <p style="font-size: 30pt">Have fun learning French!</p>
+
+    </div>
+
+    <div style="text-align: center">
+
+
+      <div id="footer">
+
+        <div id="item1">
+          <a href="./contact_us.html">
+            <p class="words">Contact Us</p>
+          </a>
+
+        </div>
+        <div id="item2">
+          <a href="./help_and_support.html">
+            <p class="words">Help and Support</p>
+          </a>
+
+        </div>
+        <div id="item3">
+          <a href="./terms.html">
+            <p class="words">Privacy and Terms</p>
+          </a>
+
+        </div>
+
+
+
+      </div>
+      <p style="font-family: sans-serif; text-align: center">© 2019 Francomobile</p>
+    </div>
+
+  </div>
+</body>
+
+</html>

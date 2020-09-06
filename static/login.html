@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    FrancoMobile-Login
+  </title>
+  <meta charset="UTF-8">
+  <!-- Navigation bar Bootstrap -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
+
+
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+  <link href="./style/login.css" rel="stylesheet">
+</head>
+
+<body>
+  <!--Navbar-->
+  <nav class="navbar navbar-dark  indigo darken-2" style="background-color: #ffa500; margin: 10px">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#">Francomobile</a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler third-button" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent22" aria-controls="navbarSupportedContent22" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <div class="animated-icon3"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent22">
+
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="./index.html">Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./contact_us.html">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./help_and_support.html">Need help?</a>
+        </li>
+      </ul>
+      <!-- Links -->
+    </div>
+    <!-- Collapsible content -->
+  </nav>
+  <!--<div id="overall">-->
+
+
+
+
+
+
+
+
+
+  <!-- 登录在这里 -->
+  <div id="loginDiv">
+
+    <!-- login form -->
+    <div id="loggingIn">
+
+      <form id="userForm" action="/user/verify" method="post" style="display: inline-block">
+        <h1 class="form-signin-heading">Welcome back!</h1>
+        <h3 class="form-signin-heading">Please login</h3>
+
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" />
+
+        <br>
+
+        <input type="password" class="form-control" id="password" name="password" min="6" maxlength="16"
+          placeholder="Enter Password" />
+
+        <!-- 按下按钮就会提交到 /user/verify -->
+        <button id="login" type="submit">Log in</button>
+      </form>
+
+      <!--换到注册页面 -->
+      <button id="switch_to_signup_tab">Sign Up</button>
+
+    </div>
+
+    <div id="signingUp">
+
+      <h1 class="form-signin-heading">Hello</h1>
+      <h3 class="form-signin-heading">Let's register for a new account</h3>
+
+
+      <form id="userForm" action="/user/register" method="post">
+        <!-- user name -->
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" />
+
+
+
+        <!-- password -->
+        <input type="password" class="form-control" id="password" name="password" min="6" maxlength="16"
+          placeholder="Enter Password" />
+
+        <!-- email -->
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" />
+
+        <!-- first name -->
+        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name" />
+
+        <!-- last name -->
+        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name" />
+
+
+        <!-- phone no pattern="\d[-]\d\d\d\d\d\d\d\d\d\d"  -->
+        <input type="text" class="form-control" id="phoneno" name="phoneno" value="1-" placeholder="Enter Phone Number e.g. 1-1234567890" />
+        <label for="phoneno" style="float: left;font-size: 20pt;">Phone Number Format: Country Code followed by dash, and then your number (e.g. 1-1234567890)  (e.g. 86-987654321)</label>
+
+        <br>
+        <br>
+        <button id="register_button" type="submit">Submit</button>
+        <br>
+      </form>
+
+      <button id="switch_to_login_tab">I already have an account</button>
+
+    </div>
+
+
+
+  </div>
+
+  <div id="footer">
+    <p style="font-family: sans-serif; text-align: center">© 2020 Francomobile</p>
+  </div>
+
+  <script>
+    $("#signingUp").hide()
+
+    $("#switch_to_signup_tab").on("click", () => {
+      $("#signingUp").show()
+      $("#loggingIn").hide()
+    })
+
+
+    $("#switch_to_login_tab").on("click", () => {
+      $("#signingUp").hide()
+      $("#loggingIn").show()
+    })
+
+  </script>
+</body>
+
+</html>

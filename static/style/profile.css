@@ -1,0 +1,467 @@
+
+
+
+
+
+    /* Start of body CSS */
+    body {
+        
+        background-color: #EC7F60;
+    }
+
+    .profile-picture {
+        width: 300px;
+        margin: auto;
+/*
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+*/
+
+        
+        
+    }
+    img {
+        border-radius: 50%;
+    }
+
+    .main-container {
+        padding-top: 20px;
+        text-align: center;
+        font-size: 12pt;
+    }
+
+        @import url(https://fonts.googleapis.com/css?family=Sniglet|Raleway:900);
+
+
+        body,
+        html {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            font-family: 'Sniglet', cursive;
+        }
+
+        h1 {
+            font-weight: normal;
+            font-size: 4em;
+            font-family: 'Raleway', sans-serif;
+            /*    margin: 0 auto;*/
+            margin-top: 30px;
+            width: 500px;
+            color: #F90;
+
+
+        }
+
+        /* Animation webkit */
+        @-webkit-keyframes myfirst {
+            0% {
+                margin-left: -235px;
+            }
+
+            90% {
+                margin-left: 100%;
+            }
+
+            100% {
+                margin-left: 100%;
+            }
+        }
+
+        /* Animation */
+        @keyframes myfirst {
+            0% {
+                margin-left: -235px;
+            }
+
+            70% {
+                margin-left: 100%;
+            }
+
+            100% {
+                margin-left: 100%;
+            }
+        }
+
+        .fish {
+            background-image: url('http://www.geertjanhendriks.nl/codepen/form/fish.png');
+            width: 235px;
+            height: 104px;
+            margin-left: -235px;
+            position: absolute;
+            animation: myfirst 24s;
+            -webkit-animation: myfirst 24s;
+            animation-iteration-count: infinite;
+            -webkit-animation-iteration-count: infinite;
+            animation-timing-function: linear;
+            -webkit-animation-timing-function: linear;
+        }
+
+        #fish {
+            top: 120px;
+        }
+
+        #fish2 {
+            top: 260px;
+            animation-delay: 12s;
+            -webkit-animation-delay: 12s;
+        }
+
+
+        header {
+            height: 160px;
+            background: url('http://www.geertjanhendriks.nl/codepen/form/golf.png') repeat-x bottom;
+        }
+
+        #form {
+            height: 100%;
+            background-color: #EC7F60;
+            overflow: hidden;
+            position: relative;
+
+        }
+
+        form {
+            margin: 0 auto;
+            width: 500px;
+            padding-top: 10px;
+            color: white;
+            position: relative;
+
+
+        }
+
+        label,
+        input,
+        textarea {
+            display: block;
+        }
+
+        input,
+        textarea {
+            width: 500px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            padding: 10px;
+            font-family: 'Sniglet', cursive;
+            font-size: 1em;
+            color: #676767;
+            transition: border 0.5s;
+            -webkit-transition: border 0.5s;
+            -moz-transition: border 0.5s;
+            -o-transition: border 0.5s;
+            border: solid 3px #F79862;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
+        }
+
+        input:focus,
+        textarea:focus {
+            border: solid 3px #F79862;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+            overflow: auto;
+        }
+
+        input[type="submit"] {
+            background-color: #ce4257;
+            color: white;
+            height: 70px;
+            cursor: pointer;
+            margin-top: 30px;
+            font-size: 1.29em;
+            font-family: 'Sniglet', cursive;
+            -webkit-transition: background-color 0.5s;
+            -moz-transition: background-color 0.5s;
+            -o-transition: background-color 0.5s;
+            transition: background-color 0.5s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #720026;
+
+        }
+
+        label {
+            font-size: 1.5em;
+            margin-top: 20px;
+            padding-left: 0px;
+            text-align: center;
+            margin-left: -50px;
+        }
+
+        .formgroup,
+        .formgroup-active,
+        .formgroup-error {
+            background-repeat: no-repeat;
+            background-position: right bottom;
+            background-size: 10.5%;
+            transition: background-image 0.7s;
+            -webkit-transition: background-image 0.7s;
+            -moz-transition: background-image 0.7s;
+            -o-transition: background-image 0.7s;
+            width: 566px;
+            padding-top: 2px;
+        }
+
+        .formgroup {
+            background-image: url('http://www.geertjanhendriks.nl/codepen/form/pixel.gif');
+        }
+
+        .formgroup-active {
+            background-image: url('http://www.geertjanhendriks.nl/codepen/form/octo.png');
+        }
+
+        .formgroup-error {
+            background-image: url('http://www.geertjanhendriks.nl/codepen/form/octo-error.png');
+            color: red;
+        }
+
+
+        @import url('https://fonts.googleapis.com/css?family=Lilita+One&display=swap');
+        
+
+        #title {
+            font-size: 50pt;
+            text-align: left;
+            /*    margin: auto 10%;*/
+            /*        padding: 10%;*/
+            color: white;
+            text-shadow: 3px 3px 6px #4f000b;
+            font-family: 'Lilita One', cursive;
+ 
+        }
+
+
+        #profile {
+            text-align: center;
+  
+            font-size: 40pt;
+            color: white;
+            font-family: 'Sniglet', cursive;
+            text-shadow: 2px 2px #ff0000;
+            
+            background-color: #EC7F60;
+            
+            
+            
+        }
+
+
+        @import url(https://fonts.googleapis.com/css?family=Sniglet|Raleway:900);
+        nav {
+            font-family: 'Sniglet', cursive;
+        }
+        @media screen and (max-width: 480px) {
+            nav {
+                text-align: left;
+            }
+
+            form {
+                width: 370px;
+            }
+
+            input,
+            textarea {
+                width: 370px;
+            }
+
+        }
+
+
+        @media screen and (max-width: 2000px) {
+            nav {
+                text-align: center;
+
+            }
+        }
+
+        #speakerChoice{
+          text-align: center;
+        }
+  
+    /* Nav bar CSS*/
+    /* Icon 1 */
+    .animated-icon1,
+    .animated-icon2,
+    .animated-icon3 {
+      width: 30px;
+      height: 20px;
+      position: relative;
+      margin: 0px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+      -webkit-transition: .5s ease-in-out;
+      -moz-transition: .5s ease-in-out;
+      -o-transition: .5s ease-in-out;
+      transition: .5s ease-in-out;
+      cursor: pointer;
+    }
+
+    .animated-icon1 span,
+    .animated-icon2 span,
+    .animated-icon3 span {
+      display: block;
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      border-radius: 9px;
+      opacity: 1;
+      left: 0;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+      -webkit-transition: .25s ease-in-out;
+      -moz-transition: .25s ease-in-out;
+      -o-transition: .25s ease-in-out;
+      transition: .25s ease-in-out;
+    }
+
+    .animated-icon1 span {
+      background: #e65100;
+    }
+
+    .animated-icon2 span {
+      background: #e3f2fd;
+    }
+
+    .animated-icon3 span {
+      background: #f3e5f5;
+    }
+
+    .animated-icon1 span:nth-child(1) {
+      top: 0px;
+    }
+
+    .animated-icon1 span:nth-child(2) {
+      top: 10px;
+    }
+
+    .animated-icon1 span:nth-child(3) {
+      top: 20px;
+    }
+
+    .animated-icon1.open span:nth-child(1) {
+      top: 11px;
+      -webkit-transform: rotate(135deg);
+      -moz-transform: rotate(135deg);
+      -o-transform: rotate(135deg);
+      transform: rotate(135deg);
+    }
+
+    .animated-icon1.open span:nth-child(2) {
+      opacity: 0;
+      left: -60px;
+    }
+
+    .animated-icon1.open span:nth-child(3) {
+      top: 11px;
+      -webkit-transform: rotate(-135deg);
+      -moz-transform: rotate(-135deg);
+      -o-transform: rotate(-135deg);
+      transform: rotate(-135deg);
+    }
+
+    /* Icon 3*/
+
+    .animated-icon2 span:nth-child(1) {
+      top: 0px;
+    }
+
+    .animated-icon2 span:nth-child(2),
+    .animated-icon2 span:nth-child(3) {
+      top: 10px;
+    }
+
+    .animated-icon2 span:nth-child(4) {
+      top: 20px;
+    }
+
+    .animated-icon2.open span:nth-child(1) {
+      top: 11px;
+      width: 0%;
+      left: 50%;
+    }
+
+    .animated-icon2.open span:nth-child(2) {
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+    .animated-icon2.open span:nth-child(3) {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+
+    .animated-icon2.open span:nth-child(4) {
+      top: 11px;
+      width: 0%;
+      left: 50%;
+    }
+
+    /* Icon 4 */
+
+    .animated-icon3 span:nth-child(1) {
+      top: 0px;
+      -webkit-transform-origin: left center;
+      -moz-transform-origin: left center;
+      -o-transform-origin: left center;
+      transform-origin: left center;
+    }
+
+    .animated-icon3 span:nth-child(2) {
+      top: 10px;
+      -webkit-transform-origin: left center;
+      -moz-transform-origin: left center;
+      -o-transform-origin: left center;
+      transform-origin: left center;
+    }
+
+    .animated-icon3 span:nth-child(3) {
+      top: 20px;
+      -webkit-transform-origin: left center;
+      -moz-transform-origin: left center;
+      -o-transform-origin: left center;
+      transform-origin: left center;
+    }
+
+    .animated-icon3.open span:nth-child(1) {
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+      top: 0px;
+      left: 8px;
+    }
+
+    .animated-icon3.open span:nth-child(2) {
+      width: 0%;
+      opacity: 0;
+    }
+
+    .animated-icon3.open span:nth-child(3) {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      top: 21px;
+      left: 8px;
+    }
+
+    /* End of Nav bar CSs*/
+

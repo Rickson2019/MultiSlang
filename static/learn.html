@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>
+        flash cards
+    </title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-storage.js"></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script> -->
+
+    <!-- <script src="./script/firebaseConfig.js"></script> -->
+
+
+
+      <!--Jquery-->
+      <script src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+  <!--Boot Strap Import-->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+      integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
+      crossorigin="anonymous"></script>
+  <!--BootStrap-->
+
+  <script src="script/firebaseConfig.js"></script>
+
+
+    <style>
+        body {
+            /* display: flex; */
+            text-align: center;
+            position: relative;
+        }
+
+        #choiceBox {
+            position: relative;
+            width: 85vw;
+            left: 10vw;
+            width: 70vw;
+            display: grid;
+            grid-template-areas:
+                "pic1 pic2"
+                "pic3 pic4";
+            /* grid-template-rows: 50px 1fr 30px;
+  grid-template-columns: 150px 1fr; */
+        }
+
+        .img-thumbnail {
+
+            width: 400px;
+            height: 400px;
+        }
+
+        #frenchWordDisplayDiv {
+            font-size: 45pt;
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="audioPlayer" controls>
+
+        <source type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="audioPlayerHidden">
+
+        <source type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div id="frenchWordDisplayDiv">
+        <span id="frenchWordDisplay">French</span>
+    </div>
+
+    <div id="choiceBox">
+        <img id="pic1" class="img-thumbnail" src="/images/pathToYourImage.png" alt="Thumbnail image">
+        <img id="pic2" class="img-thumbnail" src="/images/pathToYourImage.png" alt="Thumbnail image">
+        <img id="pic3" class="img-thumbnail" src="/images/pathToYourImage.png" alt="Thumbnail image">
+        <img id="pic4" class="img-thumbnail" src="/images/pathToYourImage.png" alt="Thumbnail image">
+    </div>
+
+  
+    <script>
+        //field initialization:
+        db = firebase.firestore();
+        //本个分类中的所有单词
+        //all the words in this catagory are stored in this variable:
+        var currentWordList = [];
+        //copied from the "currentWordList" variable
+        var currentWordListImmutable;
+        //用来装未渲染的box的id
+        //ids of the thumbnail boxes are stored in this array:
+        var remainingBoxesList = [];
+        //随机抽取本单元当中的单词，返回的是string
+        //pick a random word as the question:
+        var randomQuestion;
+        //
+        var randomQuestionShow;
+        var correctShow;
+        function getCurrentList() {
+
+            //later, we need to change the "countries" collection into variables, that reads the user choice.
+            db.collection("wordlist_fr").doc("all").collection("countries").get().then(function (catagory) {
+                
+                catagory.forEach(function (word) {
+                    //把单词塞进一个array里，然后
+                    currentWordList.push(word.id);
+                    currentWordListImmutable=currentWordList;
+                })
+
+                randomQuest()
+                correctShow = randomQuestionShow
+                $("#frenchWordDisplay").html(randomQuestionShow);
+                // alert(correctShow)
+                var correctAudioURL = "./audio/" + randomQuestionShow + ".mp3";
+                $("#audioPlayer").attr("src", correctAudioURL);
+                document.getElementById("audioPlayer").play();
+
+
+                console.log("currentWordList" + currentWordList)
+                //然后随机抽取一个出来考
+
+            })
+        }
+
+
+        var wordListLength;
+        var randomWordIndex;
+        function randomQuest() {
+            //This variable is used for getting the length of the wordlist
+            wordListLength = currentWordList.length
+            //This is a random genrator that would
+            randomWordIndex = parseInt(wordListLength * Math.random());
+            //这是随机提问的取得器，接下来它就要被用来找寻单词图片了
+            randomQuestion = currentWordList[randomWordIndex] + '.jpeg';
+            randomQuestionShow = currentWordList[randomWordIndex];
+            
+            
+            //important !alert(randomQuestionShow)
+                       
+        }
+
+        var randomBoxIndex
+        remainingBoxesList = ["#pic1", "#pic2", "#pic3", "#pic4"];
+
+        function randomBoxes() {
+            randomBoxIndex = parseInt(Math.random() * remainingBoxesList.length);
+        }
+
+        var correctAnswerDiv;
+        function setCorrectAnswer() {
+            randomBoxes();
+            //随机抽取一个box，
+            var randomBox = remainingBoxesList[randomBoxIndex];
+
+            //This item is used to store the correct item from firebase.firestore
+            var correctPicURL = "./img/lexicon/country/" + randomQuestion;
+            //random抽取的box被改变了img src
+
+
+            $(randomBox).attr("src", correctPicURL);
+            correctAnswerDiv = randomBox;
+
+            //对的答案剔除出数组
+            currentWordList.splice(randomWordIndex, 1);
+            //对的答案对应的框剔除出数组
+            //remainingBoxesList.splice(remainingBoxesList.indexOf(randomBox), 1);
+            remainingBoxesList.splice(randomBoxIndex, 1);
+            randomQuest();
+
+            console.log("correct ID " + randomBox)
+     
+        }
+
+        var randomQuestion_puzzle;
+        var randomBox;
+        function setPuzzlingAnswers() {
+            randomBox = remainingBoxesList[randomBoxIndex];
+
+            randomQuestion_puzzle = currentWordList[randomWordIndex] + '.jpeg';
+
+            var puzzlePicURL = "./img/lexicon/country/" + randomQuestion;
+            $(randomBox).attr("src", puzzlePicURL)
+            console.log("remainingBoxesList " + remainingBoxesList)
+          
+            console.log("puzzlingAnswer1 ID " + remainingBoxesList[randomBoxIndex])
+            console.log("randomQuestion_puzzle1 " + randomQuestion_puzzle)
+
+            console.log("currentWordList " + currentWordList);
+            currentWordList.splice(randomWordIndex, 1);
+            remainingBoxesList.splice(randomBoxIndex, 1);
+
+            randomQuest();
+            randomBoxes();
+
+        }
+
+        function setPuzzlingAnswers2() {
+            randomBox = remainingBoxesList[randomWordIndex];
+
+            randomQuestion_puzzle = currentWordList[randomWordIndex] + '.jpeg';
+
+            var puzzlePicURL = "./img/lexicon/country/" + randomQuestion;
+            $(randomBox).attr("src", puzzlePicURL)
+            console.log("remainingBoxesList " + remainingBoxesList)
+            console.log("puzzlingAnswer2 ID " + remainingBoxesList[0])
+            // console.log("currentWordList" + currentWordList);
+            currentWordList.splice(randomWordIndex, 1);
+            remainingBoxesList.splice(randomWordIndex, 1);
+            randomQuest()
+            randomBoxes();
+            // console.log("randomQuestion_puzzle1 " + randomQuestion_puzzle)
+           
+            console.log("remainingBoxesList " + remainingBoxesList)
+
+        }
+
+        function setPuzzlingAnswers3() {
+            randomBox = remainingBoxesList[randomWordIndex];
+
+            randomQuestion_puzzle = currentWordList[randomWordIndex] + '.jpeg';
+
+            var puzzlePicURL = "./img/lexicon/country/" + randomQuestion;
+            $(randomBox).attr("src", puzzlePicURL)
+            console.log("remainingBoxesList " + remainingBoxesList)
+            console.log("puzzlingAnswer3 ID " + remainingBoxesList[0])
+            console.log("currentWordList" + currentWordList);
+           
+            randomQuest()
+            randomBoxes();
+        }
+
+      
+
+        async function sequentialStart() {
+
+            $("#choiceBox").hide()
+
+            let getList = new Promise((res, rej) => {
+                setTimeout(() => res(getCurrentList()), 1)
+            })
+
+            // alert("randomQuestion"+randomQuestion)
+
+
+            let correctOn = await getList;
+
+            let correct = new Promise((res, rej) => {
+                setTimeout(() => res(setCorrectAnswer()), 800)
+            });
+
+            // wait until the promise returns us a value
+            let puzzle1on = await correct;
+
+            let puzzle1 = new Promise((res, rej) => {
+                setTimeout(() => res(setPuzzlingAnswers()), 450)
+            });
+
+            let puzzle2on = await puzzle1;
+
+            let puzzle2 = new Promise((res, rej) => {
+                setTimeout(() => res(setPuzzlingAnswers2()), 550)
+            });
+
+            let puzzle3on = await puzzle2;
+
+
+            let puzzle3 = new Promise((res, rej) => {
+                setTimeout(() => res(setPuzzlingAnswers3()), 650)
+            });
+
+            setTimeout(() => (console.log(correctAnswerDiv)))
+
+
+            $("#choiceBox").show()
+
+            
+
+
+        }
+
+        sequentialStart()
+
+        $(document).ready(function () {
+            //when the user picks the correct picture, it does the following:
+            $(".img-thumbnail").click(function () {
+                console.log("pressed " + this.id)
+                if ("#" + this.id == correctAnswerDiv) {
+                    alert("right")
+                    //play the audio again:
+                    document.getElementById("audioPlayerHidden").setAttribute("src", "./audio/correctly_chosen.mp3")
+                    document.getElementById("audioPlayerHidden").play();
+                    //write the information
+                    let addToLearned = db.collection("user").doc("q8wIjnkdRJu9t8tJP1yk").collection("learned").doc(correctShow);
+                    addToLearned.set({
+                        "practice_times": 1,
+                        "time_added":Date.now(),
+                    })
+                }
+                else {
+                    alert("wrong")
+                    document.getElementById("audioPlayerHidden").setAttribute("src", "./audio/chosen_wrong.ogg")
+                    document.getElementById("audioPlayerHidden").play();
+                    
+
+                    let addToIncorrect = db.collection("user").doc("q8wIjnkdRJu9t8tJP1yk").collection("wrong_words").doc(correctShow);
+                    var wrong_times1;
+                    
+                    addToIncorrect.get().then(function(wrongInfo){
+                        wrong_times1 = wrongInfo.data().wrong_times
+                        console.log("wrong_times before " + wrong_times1)
+                    wrong_times1++;
+                    console.log("wrong_times now " + wrong_times1)
+                   
+                    
+                    var wrongObj = {"wrong_times": null,"time_added":null};
+                    wrongObj["wrong_times"] = wrong_times1;
+                    wrongObj["time_added"] = Date.now();
+                    console.log("wrongObj" + wrongObj["wrong_times"])
+                    addToIncorrect.set(wrongObj)
+                })
+
+                }
+            });
+
+        })
+
+
+
+
+    </script>
+</body>
+
+
+</html>

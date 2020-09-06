@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>
+        flash cards
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap');
+    </style>
+
+    <link href="./style/quizMode.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+
+    <div id="showLastNextContainer">
+        <span id="previous">previous: </span>
+        <span id="lastCard"> </span>
+
+        <div id="progressStatus">
+
+            <img src='./img/home_version2.png' id="homeBtn">
+            <span id="howManyToGo"></span>
+        </div>
+
+    </div>
+    <label for="favouriteBtn" class="custom-checkbox" id="favouriteBtnDiv">
+        <input type="checkbox" id="favouriteBtn" />
+        <i class="glyphicon glyphicon-star-empty"></i>
+        <i class="glyphicon glyphicon-star"></i>
+        <span></span>
+    </label>
+
+
+
+
+
+    <!-- 法语单词显示 -->
+    <div id="frenchWordDisplayDiv">
+        <span id="frenchWordDisplay" style="color: #ff6200">French</span>
+    </div>
+
+    <!-- 播音器 -->
+    <div>
+        <audio id="audioPlayer" controls>
+
+            <source type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <img src="./img/report.png" id="reportBug">
+
+    </div>
+
+    <!-- 英语词意 -->
+    <!-- <div id="englishMeaningDisplayDiv">
+        <span id="englishMeaningDisplay" style="color:#ff8c00">English</span>
+    </div> -->
+
+    <div id='picDiv'>
+        <div v-for="item in items">
+            <img :src="'./img/lexicon/' + currentWordListName + '/' + item + '.jpg' " :word="item"
+                class="picture_choices" :key="item" />
+        </div>
+
+
+        <!-- <img id="pic"> -->
+
+    </div>
+    <!-- 
+    <div id="englishExplanationDiv">
+        <span id="englishExplanation" style="color: #ffb700">English Explanation</span>
+
+    </div>
+
+    <br> -->
+
+    <div class='grey'></div>
+
+    <div id="buttons">
+        <button id="PASS" style="font-size: 20pt">PASS</button>
+        <button id="nextCard" @click="refresh" style="font-size: 20pt">Next Word</button>
+
+    </div>
+
+
+
+
+    <div id="footer">
+        <p style="font-family: sans-serif; text-align: center">© 2020 Francomobile</p>
+    </div>
+
+    <div id="reportInput">
+
+        <div>
+            <span id="showWord">
+
+            </span>
+            <p>Please Choose the mistake type:</p>
+        </div>
+
+        <input type="checkbox" name="Spelling" id="error_type_spelling">
+        <span>Spelling</span><br>
+
+        <input type="checkbox" name="Audio" id="error_type_audio">
+        <span>Audio</span><br>
+
+        <input type="checkbox" name="English Explanation" id="error_type_english">
+        <span>English Explanation</span><br>
+        <button id="submitBugReport">submit</button>
+
+    </div>
+
+    <!--Jquery-->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+    <!--Boot Strap Import-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+        integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous">
+        </script>
+    <!--BootStrap-->
+
+
+    <script>
+        //当前词汇表(array),将来应当把它弄成Object
+        var currentWordList = [];
+
+        //这个是朗读者的名字
+        //不知道为何有两个
+        var audioSpeaker;
+        var audioSpeaker = "thomas";
+
+
+        //图片对的名字.jpg
+        var QuestionPic;
+
+        var QuestionShow;
+        var correctShow;
+        var wordListLength;
+        var WordIndex = 0;
+
+        //当前wordlist的名字
+        var wordListName = localStorage.chosenWordListName
+        var currentWordListName = localStorage.chosenWordListName;
+
+
+        //斩掉的单词这两个是一样的，要合并
+        var passed = []
+
+
+
+
+        //加入喜欢列表的单词
+        var favorite = []
+
+        console.log("wordListName" + currentWordListName)
+
+
+
+        //当前的word index 
+        var WordIndex = 0;
+
+        async function getTrackerInfo() {
+            await $.ajax({
+                type: "get",
+                url: "/user/getProfile",
+                success: function (response) {
+                    // 切换到用户选的那个announcer
+                    audioSpeaker = response.announcer
+
+                    passed = response.passed
+                    favorite = response.favorite
+                    WordIndex = response.tracker[currentWordListName]
+                    console.log("WordIndex 185------------------")
+                    console.log(response.tracker)
+                    console.log(WordIndex)
+                    return
+                }
+            });
+        }
+
+
+
+        async function getCurrentListFromCloud() {
+
+            let a = await getTrackerInfo()
+            //当前列表名
+
+            var currentWordListName = localStorage.chosenWordListName;
+            console.log("localStorage--------------------line 200")
+            console.log(localStorage)
+            let wordlist
+            await $.ajax({
+                type: "POST",
+                url: "/enterWordlist",
+                data: { "chosenWordList": currentWordListName },
+                dataType: "json",
+                success: function (response) {
+                    //拿到所有数据条目
+                    wordlist = response[currentWordListName]
+                    console.log(wordlist)
+                    for (var i in wordlist) {
+                        currentWordList.push(wordlist[i])
+                    }
+                    return
+                },
+                error: () => {
+                    getCurrentListFromLocalStorage()
+                }
+
+            });
+        }
+
+        //从浏览器缓存获取wordList
+        function getCurrentListFromLocalStorage() {
+            console.log(localStorage)
+            currentWordList = JSON.parse(localStorage.getItem(currentWordListName));
+            console.log("currentWordList" + currentWordList)
+
+            setTimeout(() => {
+                for (i = 0; i < passed.length; i++) {
+                    currentWordList.splice(currentWordList.indexOf(passed[i]), 1);
+                    // alert("currentWordList" + currentWordList)
+                }
+            }, 100);
+
+
+
+            QuestionPic = currentWordList[WordIndex] + '.jpg';
+            QuestionShow = currentWordList[WordIndex];
+            correctShow = QuestionShow;
+        }
+
+
+        // 比上面那段要好看很多
+
+        $.when(getCurrentListFromCloud()).
+            then(
+
+                () => {
+
+                    return getTrackerInfo()
+                }
+
+            ).then(
+                () => {
+                    return refreshStatus()
+                }
+
+
+            ).then(
+                (
+                    () => {
+                        console.log("currentWordList")
+                        console.log(currentWordList)
+                        QuestionPic = currentWordList[WordIndex] + '.jpg';
+                        QuestionShow = currentWordList[WordIndex];
+                        correctShow = QuestionShow;
+
+                        console.log("QuestionShow ---- 205")
+                        console.log(QuestionShow)
+                        console.log("audioSpeaker")
+                        console.log(audioSpeaker)
+                    })
+            ).then(
+                () => {
+                    console.log("currentWordList.length ------ 277")
+                    console.log(currentWordList.length)
+                    let randomSize = currentWordList.length;
+                    let distractItems = []
+                    try {
+                        for (var i = 1; i <= 3; i++) {
+                            distractItems.push(currentWordList[Math.floor(Math.random() * randomSize)].id)
+                            console.log(Math.floor(Math.random() * randomSize))
+                            console.log(currentWordList[Math.floor(Math.random() * randomSize)].id)
+                        }
+
+                    } catch (e) {
+                        console.log(e)
+                    }
+                    finally {
+                        console.log("%c" + distractItems, 'color:blue;border:1px solid black', 'color:black;border:1px solid black')
+                        distractItems.push(currentWordList[WordIndex].id)
+                        distractItems.sort(function (a, b) { return 0.5 - Math.random() })
+                        return distractItems
+                    }
+                }
+            ).then(
+                distractItems => {
+                    vueRefresh(distractItems)
+                }
+
+            ).then(() => {
+                //防止图片被拖动      
+                $('img').on('dragstart', function (event) { event.preventDefault(); });
+                // 判断正误
+                $(".picture_choices").on('click', (e) => {
+                    e.preventDefault()
+                    if ($(e.target).attr("word") == currentWordList[WordIndex].id) {
+                        console.log("correct")
+
+                        $(e.target.parentNode).append('<img src="/img/correct.jpg" style="z-index:10; position:relative;transform: translate(-0%, -120%);;width:40% ">')
+
+                        setTimeout(() => {
+
+                            nextCard()
+
+                        }, 800);
+                    }
+                    else {
+                        console.log("wrong")
+                    }
+
+                })
+            })
+
+        async function getDistractItems() {
+
+            () => {
+                console.log("currentWordList.length ------ 277")
+                console.log(currentWordList.length)
+                let randomSize = currentWordList.length;
+                let distractItems = []
+                try {
+                    for (var i = 1; i <= 3; i++) {
+                        distractItems.push(currentWordList[Math.floor(Math.random() * randomSize)].id)
+                        console.log(Math.floor(Math.random() * randomSize))
+                        console.log(currentWordList[Math.floor(Math.random() * randomSize)].id)
+                    }
+
+                } catch (e) {
+                    console.log(e)
+                }
+                finally {
+                    console.log("%c" + distractItems, 'color:blue;border:1px solid black', 'color:black;border:1px solid black')
+                    distractItems.push(currentWordList[WordIndex].id)
+                    distractItems.sort(function (a, b) { return 0.5 - Math.random() })
+                    return distractItems
+                }
+            }
+
+        }
+
+        async function vueRefresh(distractItems) {
+
+            var distractor = new Vue({
+                el: '#picDiv',
+                data: {
+                    items: distractItems,
+                    announcer: audioSpeaker,
+                    currentWordListName: currentWordListName,
+                    QuestionPic: QuestionPic
+                },
+                methods: {
+                    refresh() {
+                        console.log("refreshing")
+                        getDistractItems().then(distractItems => {
+                            Vue.set(this.items, distractItems)
+                        })
+
+                    }
+                }
+            })
+            console.log(distractor)
+
+        }
+
+
+
+
+
+
+
+
+        $("#reportInput").hide();
+        $("#reportBug").click(function () {
+            $("#reportInput").toggle();
+        })
+
+        $("#submitBugReport").click(function () {
+            let bugReportObj = {
+
+                "error_type_spelling": 0,
+                "error_type_audio": 0,
+                "error_type_english": 0,
+
+            }
+            if ($("#error_type_spelling").is(":checked")) {
+
+                bugReportObj["error_type_spelling"] = 1;
+
+            }
+
+            if ($("#error_type_audio").is(":checked")) {
+                bugReportObj["error_type_audio"] = 1;
+
+            }
+
+            if ($("#error_type_english").is(":checked")) {
+                bugReportObj["error_type_english"] = 1;
+            }
+
+
+            let data = bugReportObj
+            console.log(data)
+            $.ajax({
+                type: "POST",
+                url: "/bugReport",
+                data: data,
+                dataType: "text",
+                success: function () {
+                    console.log(data)
+                    $('#error_type_spelling').attr('checked', false);
+                    $('#error_type_audio').attr('checked', false);
+                    $('#error_type_english').attr('checked', false);
+                    $('#error_type_spelling').prop('checked', false);
+                    $('#error_type_audio').prop('checked', false);
+                    $('#error_type_english').prop('checked', false);
+                    alert("Thanks for your report!");
+                    $("#reportInput").toggle();
+                },
+                error: function () {
+                    $('#error_type_spelling').attr('checked', false);
+                    $('#error_type_audio').attr('checked', false);
+                    $('#error_type_english').attr('checked', false);
+                    $('#error_type_spelling').prop('checked', false);
+                    $('#error_type_audio').prop('checked', false);
+                    $('#error_type_english').prop('checked', false);
+                    alert("failed to submit");
+                    $("#reportInput").toggle();
+
+                }
+
+            }
+            )
+
+            // // $('#error_type_spelling').attr('checked', false);
+            // // $('#error_type_audio').attr('checked', false);
+            // // $('#error_type_english').attr('checked', false);
+            // $('#error_type_spelling').prop('checked', false);
+            // $('#error_type_audio').prop('checked', false);
+            // $('#error_type_english').prop('checked', false);
+
+            // $("#reportInput").hide();
+
+
+        })
+
+
+        //本个分类中的所有单词
+
+
+
+
+
+        function getPassedList() {
+
+            passed = [];
+            $.ajax({
+                type: "get",
+                url: "/getPassedList",
+
+                dataType: "text",
+                success: function (response) {
+
+
+                }
+            });
+
+        }
+
+
+
+
+
+
+
+        // function CheckFileExists(fileurl) {
+        //     var ImgObj = new Image(); //判断图片是否存在
+        //     ImgObj.src = imgurl;
+        //     //存在图片
+        //     if (ImgObj.fileSize > 0 || (ImgObj.width > 0 && ImgObj.height > 0)) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // }
+
+        //只是用来refresh
+        async function
+            refreshStatus() {
+
+            // 更新favorite 图标
+            console.log("favorite.includes(currentWordList[WordIndex].id) --------344")
+            console.log(favorite.includes(currentWordList[WordIndex].id))
+            console.log("checkFavourite.checked---------346")
+
+
+            if (favorite.includes(currentWordList[WordIndex].id)) {
+                $(checkFavourite).prop("checked", true)
+
+            }
+            else {
+                $(checkFavourite).prop("checked", false)
+
+            }
+
+
+
+            //显示的图片
+            QuestionPic = currentWordList[WordIndex].id + '.jpg';
+            //问题的答案
+            QuestionShow = currentWordList[WordIndex];
+
+            if (WordIndex >= 1) {
+
+                console.log("lastCard is ------------ 366")
+                console.log(currentWordList[WordIndex - 1].id)
+                $("#lastCard").html(currentWordList[WordIndex - 1].id)
+            }
+
+
+            //法语单词
+            $("#frenchWordDisplay").html(QuestionShow.id);
+
+            //英文单词
+            $("#englishMeaningDisplay").html(QuestionShow["english_meaning"]);
+
+            console.log("english_meaning")
+            console.log(QuestionShow["english_meaning"])
+
+
+            //进入题库时播放的音频链接
+            let correctAudioURL = "./audio/ATTS " + QuestionShow.id + " (oddcast fr" + audioSpeaker + ").mp3";
+            //hang the source to the "src" attribute
+            $("#audioPlayer").attr("src", correctAudioURL);
+            //plays the aduio
+            setTimeout(() => {
+                document.getElementById("audioPlayer").play();
+            }, 50);
+            // document.getElementById("audioPlayer").play();
+
+
+            //Hang the source to the "src" tag
+            $("#pic").attr("src", "./img/lexicon/" + currentWordListName + "/" + QuestionPic)
+            console.log("correctAudioURL")
+            console.log(correctAudioURL)
+            console.log(QuestionShow)
+        }
+
+        //When "next word" button is clicked, the word index property will increase
+        function nextCard() {
+            WordIndex++
+
+            var data = { "currentWordListName": currentWordListName, "currentStudyProgress": WordIndex }
+            $.ajax({
+                type: "POST",
+                url: "/wordIndexUpdate",
+                data: data,
+
+            });
+
+            window.location.reload()
+
+        }
+
+
+
+
+        // function recap() {
+
+        //     QuestionPic = currentWordList[WordIndex] + '.jpg';
+        //     QuestionShow = currentWordList[WordIndex];
+
+        //     $("#frenchWordDisplay").html(QuestionShow.id);
+
+        //     var correctAudioURL = "./audio/ATTS " + QuestionShow + " (oddcast fr" + audioSpeaker + ").mp3";
+        //     //            if (CheckImgExists(correctAudioURL) == false) {
+        //     //                correctAudioURL = "./audio/ATTS " + QuestionShow + " (oddcast frchloe).mp3";
+        //     //            }
+        //     $("#audioPlayer").attr("src", correctAudioURL);
+        //     db.collection("wordlist_fr").doc("all").collection(wordListName).doc(QuestionShow).get().then(function (
+        //         word) {
+        //         $("#englishMeaningDisplay").html(word.data().english_meaning);
+        //         $("#englishExplanation").html(word.data().english_explanation);
+        //     })
+        //     document.getElementById("audioPlayer").play();
+        //     // $("#howManyToGo").html("Left to study: " + (currentWordList.length - 1 - WordIndex));
+        //     // $("#lastCard").html(currentWordList[WordIndex - 1]);
+        //     db.collection("wordlist_fr").doc("all").collection(wordListName).doc(QuestionShow).onSnapshot(function (
+        //         word) {
+        //         $("#englishMeaningDisplay").html(word.data().english_meaning);
+        //         $("#englishExplanation").html(word.data().english_explanation);
+        //         $("#pic").attr("src", "./img/lexicon/" + wordListName + "/" + QuestionShow.id + ".jpg")
+        //     })
+        //     firebase.auth().onAuthStateChanged(function (user) {
+        //         db.collection("user").doc(user.uid).collection("favourite_words").doc(QuestionShow).get().then(
+        //             function (doc) {
+        //                 // console.log(doc.data())
+        //                 if (doc.data() != null) {
+        //                     checkFavourite.checked = true;
+        //                     $(".glyphicon-star").css("opacity", "1");
+        //                 } else {
+        //                     checkFavourite.checked = false;
+        //                     $(".glyphicon-star").css("opacity", "0");
+        //                 }
+        //             })
+        //     })
+        // }
+
+
+        function lastCard() {
+            let lastCard = document.getElementById("lastCard");
+            if (WordIndex <= 0) {
+                WordIndex = 0;
+            } else {
+                WordIndex--;
+                // alert("WordIndex" + WordIndex)
+            }
+            refreshStatus()
+        }
+
+
+        function PASS() {
+            let passed = { "passed": currentWordList[WordIndex].id }
+            $.ajax({
+                type: "POST",
+                url: "/addToPassedList",
+                data: passed,
+
+                success: function (response) {
+
+                }
+            });
+
+
+
+            console.log("WordIndex " + WordIndex)
+            //这是随机提问的取得器，接下来它就要被用来找寻单词图片了
+            QuestionPic = currentWordList[WordIndex] + '.jpg';
+            QuestionShow = currentWordList[WordIndex];
+            // $("#howManyToGo").html("Left to study: " + (currentWordList.length - 1 - WordIndex));
+            // $("#lastCard").html(currentWordList[WordIndex - 1]);
+            // let lastCard = document.getElementById("lastCard");
+        }
+        var checkFavourite = document.getElementById("favouriteBtn");
+
+        function addFavourite() {
+            let favoriteWord = currentWordList[WordIndex]
+            let sendData = { "favoriteWord": favoriteWord.id }
+            $(checkFavourite).attr("checked", true)
+            $.ajax({
+                type: "addFavorite",
+                method: "POST",
+                url: "/addFavorite",
+                data: sendData,
+                dataType: "json",
+                success: function (response) {
+                    alert("added to favorite")
+                }
+            });
+            // checkFavourite.state = true
+            // $(".glyphicon-star").css("opacity", "1");
+
+        }
+
+        function cancelFavourite() {
+            let favoriteWord = currentWordList[WordIndex]
+            let sendData = { "favoriteWord": favoriteWord.id }
+            $(checkFavourite).attr("checked", false)
+            $.ajax({
+                type: "addFavorite",
+                method: "POST",
+                url: "/cancelFavorite",
+                data: sendData,
+                dataType: "json",
+                success: function (response) {
+                    alert("cancelFavorite")
+                }
+            });
+            // checkFavourite.state = false
+            // $(".glyphicon-star").css("opacity", "0");
+
+        }
+
+
+
+
+
+        // setTimeout(() => {
+        //     if (localStorage.getItem(currentWordListName) === null) {
+        //         getCurrentListFromCloud();
+
+        //         console.log("no local storage, downloading from the cloud")
+        //     }
+        //     else {
+        //         getCurrentListFromLocalStorage();
+
+        //         console.log("using local storage")
+        //     }
+
+        // }, 55);
+
+        checkFavourite.addEventListener("click", function () {
+            console.log("checkFavourite.checked ---553")
+            console.log(checkFavourite.checked)
+            if (!checkFavourite.checked) {
+                console.log($(checkFavourite).attr("checked"))
+                console.log("cancel favorite")
+                cancelFavourite()
+                // checkFavourite.checked == false
+            } else if (checkFavourite.checked == true) {
+
+                console.log("add favorite")
+                addFavourite();
+                // checkFavourite.checked == true
+
+
+            }
+
+        })
+
+
+
+
+        document.getElementById("nextCard").addEventListener("click", function () {
+            nextCard();
+            refreshStatus()
+        })
+
+        document.getElementById("PASS").addEventListener("click", function () {
+            PASS();
+
+            WordIndex++;
+            refreshStatus()
+
+
+
+        })
+
+        document.getElementById("lastCard").addEventListener("click", function () {
+            lastCard();
+            recap()
+
+        })
+
+        $("#homeBtn").on("click", function () {
+            console.log("Go Back To Homepage")
+            window.location.href = "./homepage.html";
+
+
+        })
+
+    </script>
+
+
+
+</body>
+
+
+</html>

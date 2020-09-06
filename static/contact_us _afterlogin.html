@@ -1,0 +1,960 @@
+<html>
+
+<head>
+  <title>Contact Us</title>
+
+  <meta charset="UTF-8">
+  <!-- Navigation bar Bootstrap -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script>
+  <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-firestore.js"></script>
+  <!--Authentication Sign in with a pre-built UI-->
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAUdGXmlceadWNG32LVOsPbmjdogYbXRcM",
+      authDomain: "francomobile-2.firebaseapp.com",
+      databaseURL: "https://francomobile-2.firebaseio.com",
+      projectId: "francomobile-2",
+      storageBucket: "francomobile-2.appspot.com",
+      messagingSenderId: "1084986255305",
+      appId: "1:1084986255305:web:37c28213577036cf866a18",
+      measurementId: "G-2G2SJ7YGJ8"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
+    // var st=firebase.initializeApp(firebaseConfig).storage();
+    var db = firebase.firestore();
+  </script>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Sniglet|Raleway:900);
+
+
+    body,
+    html {
+      width:100vw;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      font-family: 'Sniglet', cursive;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: normal;
+      font-size: 4em;
+      font-family: 'Raleway', sans-serif;
+      /*    margin: 0 auto;*/
+      margin-top: 30px;
+      width: 100%;
+      color: #F90;
+
+
+
+    }
+
+    /* Animation webkit */
+    @-webkit-keyframes myfirst {
+      0% {
+        margin-left: -235px;
+      }
+
+      /* 90% {
+        margin-left: 250px;
+      } */
+
+      100% {
+        margin-left: 50vw;
+      }
+    }
+
+    /* Animation */
+    @keyframesmyfirst {
+      0% {
+        margin-left: -235px;
+      }
+
+      /* 90% {
+        margin-left: 250px;
+      } */
+
+      100% {
+        margin-left: 50vw;
+      }
+    }
+
+    .fish {
+      background-image: url('http://www.geertjanhendriks.nl/codepen/form/fish.png');
+      width: 235px;
+      height: 104px;
+      margin-left: -235px;
+      position: absolute;
+      animation: myfirst 24s;
+      -webkit-animation: myfirst 24s;
+      animation-iteration-count: infinite;
+      -webkit-animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      -webkit-animation-timing-function: linear;
+    }
+
+    #fish {
+      top: 120px;
+    }
+
+    #fish2 {
+      top: 260px;
+      animation-delay: 12s;
+      -webkit-animation-delay: 12s;
+    }
+
+
+    header {
+      height: 160px;
+      background: url('http://www.geertjanhendriks.nl/codepen/form/golf.png') repeat-x bottom;
+    }
+
+    #form {
+      height: 100vh;
+      background-color: #EC7F60;
+      overflow: hidden;
+      position: relative;
+
+    }
+
+    form {
+      margin: 0 auto;
+      width: 500px;
+      padding-top: 10px;
+      color: white;
+      position: relative;
+
+
+    }
+
+    label,
+    input,
+    textarea {
+      display: block;
+    }
+
+    input,
+    textarea {
+      width: 500px;
+      border: none;
+      border-radius: 20px;
+      outline: none;
+      padding: 10px;
+      font-family: 'Sniglet', cursive;
+      font-size: 1em;
+      color: #676767;
+      transition: border 0.5s;
+      -webkit-transition: border 0.5s;
+      -moz-transition: border 0.5s;
+      -o-transition: border 0.5s;
+      border: solid 3px #F79862;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+
+    }
+
+    input:focus,
+    textarea:focus {
+      border: solid 3px #F79862;
+    }
+
+    textarea {
+      height: 100px;
+      resize: none;
+      overflow: auto;
+    }
+
+    input[type="submit"] {
+      background-color: #ce4257;
+      color: white;
+      height: 70px;
+      cursor: pointer;
+      margin-top: 30px;
+      font-size: 1.29em;
+      font-family: 'Sniglet', cursive;
+      -webkit-transition: background-color 0.5s;
+      -moz-transition: background-color 0.5s;
+      -o-transition: background-color 0.5s;
+      transition: background-color 0.5s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #720026;
+
+    }
+
+    label {
+      font-size: 1.5em;
+      margin-top: 20px;
+      padding-left: 0px;
+      text-align: center;
+      margin-left: -50px;
+    }
+
+    .formgroup,
+    .formgroup-active,
+    .formgroup-error {
+      background-repeat: no-repeat;
+      background-position: right bottom;
+      background-size: 10.5%;
+      transition: background-image 0.7s;
+      -webkit-transition: background-image 0.7s;
+      -moz-transition: background-image 0.7s;
+      -o-transition: background-image 0.7s;
+      width: 566px;
+      padding-top: 2px;
+    }
+
+    .formgroup {
+      background-image: url('http://www.geertjanhendriks.nl/codepen/form/pixel.gif');
+    }
+
+    .formgroup-active {
+      background-image: url('http://www.geertjanhendriks.nl/codepen/form/octo.png');
+    }
+
+    .formgroup-error {
+      background-image: url('http://www.geertjanhendriks.nl/codepen/form/octo-error.png');
+      color: red;
+    }
+  </style>
+
+
+  <style>
+    body {
+      background-image: linear-gradient(#ffff77, #ffffd4);
+
+    }
+
+    @import url(https://fonts.googleapis.com/css?family=Sniglet|Raleway:900);
+
+    @media screen and (max-width: 2000px) {
+
+
+      nav {
+        text-align: center;
+      }
+    }
+
+    /* for 2000px or less */
+    @media screen and (max-width: 480px) {
+
+      nav {
+        text-align: left;
+      }
+
+      input {
+        width: 300px;
+      }
+    }
+
+    html,
+    body,
+    div,
+    span,
+    applet,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    a,
+    abbr,
+    acronym,
+    address,
+    big,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    img,
+    ins,
+    kbd,
+    q,
+    s,
+    samp,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    tt,
+    var,
+    b,
+    u,
+    i,
+    center,
+    dl,
+    dt,
+    dd,
+    ol,
+    ul,
+    li,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td,
+    article,
+    aside,
+    canvas,
+    details,
+    embed,
+    figure,
+    figcaption,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    output,
+    ruby,
+    section,
+    summary,
+    time,
+    mark,
+    audio,
+    video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font: inherit;
+      font-size: 100%;
+      vertical-align: baseline;
+    }
+
+    html {
+      line-height: 1;
+    }
+
+    ol,
+    ul {
+      list-style: none;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    caption,
+    th,
+    td {
+      text-align: left;
+      font-weight: normal;
+      vertical-align: middle;
+    }
+
+    q,
+    blockquote {
+      quotes: none;
+    }
+
+    q:before,
+    q:after,
+    blockquote:before,
+    blockquote:after {
+      content: "";
+      content: none;
+    }
+
+    a img {
+      border: none;
+    }
+
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    main,
+    menu,
+    nav,
+    section,
+    summary {
+      display: block;
+    }
+
+    * {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .full {
+      width: 100%;
+      float: left;
+      padding: 1em;
+    }
+
+    .half {
+      width: 50%;
+      float: left;
+      padding: 1em;
+    }
+
+    .third {
+      width: 33.3%;
+      float: left;
+      padding: 1em;
+    }
+
+    body {
+      text-align: center;
+      font-family: 'Lato', 'sans-serif';
+      font-weight: 400;
+    }
+
+    h2 {
+      font-family: "Fjalla One";
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    header {
+      background: #ffc862;
+      height: 200px;
+    }
+
+    header h2 {
+      width: 100%;
+      background: #ffac14;
+      color: #764c00;
+      text-transform: uppercase;
+      font-weight: 400;
+      font-size: 1.2em;
+    }
+
+    header h2 em {
+      color: white;
+    }
+
+    header h2 a {
+      color: white;
+    }
+
+    header .icon {
+      font-family: "Fjalla One";
+      font-size: 5em;
+      font-weight: 700;
+      padding: 0.5em;
+      color: #ffa500;
+    }
+
+    form {
+      padding: 4em 20%;
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 960px) {
+      form {
+        width: 100%;
+        padding: 2em 10%;
+      }
+    }
+
+    h2.heading {
+      font-size: 18px;
+      text-transform: uppercase;
+      font-weight: 300;
+      text-align: left;
+      color: #ffa500;
+      border-bottom: 1px dashed #ffa500;
+      padding: 1em;
+      margin-bottom: 20px;
+    }
+
+    .controls {
+      text-align: left;
+      position: relative;
+    }
+
+    .controls input[type="text"],
+    .controls input[type="email"],
+    .controls input[type="tel"],
+    .controls textarea,
+    .controls button,
+    .controls select {
+      padding: 12px;
+      font-size: 14px;
+      border: 2px solid #808184;
+      width: 100%;
+      color: #888;
+      font-family: 'Lato', 'sans-serif';
+      font-size: 16px;
+      -moz-border-radius: 4px;
+      -webkit-border-radius: 4px;
+      border-radius: 4px;
+      -moz-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      -webkit-transition: all 0.2s;
+      transition: all 0.2s;
+    }
+
+    .controls input[type="text"]:focus,
+    .controls input[type="text"]:hover,
+    .controls input[type="email"]:focus,
+    .controls input[type="email"]:hover,
+    .controls input[type="tel"]:focus,
+    .controls input[type="tel"]:hover,
+    .controls textarea:focus,
+    .controls textarea:hover,
+    .controls button:focus,
+    .controls button:hover,
+    .controls select:focus,
+    .controls select:hover {
+      outline: none;
+      border-color: #ffa500;
+      background: #e9fff2;
+    }
+
+    .controls input[type="text"]:focus+label,
+    .controls input[type="text"]:hover+label,
+    .controls input[type="email"]:focus+label,
+    .controls input[type="email"]:hover+label,
+    .controls input[type="tel"]:focus+label,
+    .controls input[type="tel"]:hover+label,
+    .controls textarea:focus+label,
+    .controls textarea:hover+label,
+    .controls button:focus+label,
+    .controls button:hover+label,
+    .controls select:focus+label,
+    .controls select:hover+label {
+      color: #ffa500;
+      cursor: text;
+    }
+
+    .controls select {
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .controls label {
+      position: absolute;
+      left: 20px;
+      top: 28px;
+      color: #999;
+      font-size: 16px;
+      display: inline-block;
+      padding: 4px 10px;
+      font-weight: 700;
+      transition: color 0.3s, top 0.2s, font-size 0.2s;
+    }
+
+    .controls label.active {
+      top: -10px;
+      left: 16px;
+      color: #555;
+      font-style: oblique;
+      font-size: 0.8em;
+    }
+
+    .controls textarea {
+      resize: none;
+      height: 200px;
+    }
+
+    .controls button {
+      cursor: pointer;
+      background-color: #ffcf76;
+      border: none;
+      color: #fff;
+      padding: 12px 0;
+      margin: 1em 0;
+    }
+
+    .controls button:hover {
+      background-color: #ffac14;
+    }
+  </style>
+  <script>
+    // Added input value check on postback/load, removed floatLabel class from select input. Modified the scss, added color map.
+
+    (function ($) {
+      function floatLabel(inputType) {
+        $(inputType).each(function () {
+          var $this = $(this);
+          var text_value = $(this).val();
+
+          // on focus add class "active" to label
+          $this.focus(function () {
+            $this.next().addClass("active");
+          });
+
+          // on blur check field and remove class if needed
+          $this.blur(function () {
+            if ($this.val() === '' || $this.val() === 'blank') {
+              $this.next().removeClass();
+            }
+          });
+
+          // Check input values on postback and add class "active" if value exists
+          if (text_value != '') {
+            $this.next().addClass("active");
+          }
+        });
+
+        // Automatically remove floatLabel class from select input on load
+        $("select").next().removeClass();
+      }
+      // Add a class of "floatLabel" to the input field
+      floatLabel(".floatLabel");
+    });
+  </script>
+
+  <style>
+    /* Nav bar CSS*/
+    /* Icon 1 */
+    .animated-icon1,
+    .animated-icon2,
+    .animated-icon3 {
+      width: 30px;
+      height: 20px;
+      position: relative;
+      margin: 0px;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+      -webkit-transition: .5s ease-in-out;
+      -moz-transition: .5s ease-in-out;
+      -o-transition: .5s ease-in-out;
+      transition: .5s ease-in-out;
+      cursor: pointer;
+    }
+
+    .animated-icon1 span,
+    .animated-icon2 span,
+    .animated-icon3 span {
+      display: block;
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      border-radius: 9px;
+      opacity: 1;
+      left: 0;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+      -webkit-transition: .25s ease-in-out;
+      -moz-transition: .25s ease-in-out;
+      -o-transition: .25s ease-in-out;
+      transition: .25s ease-in-out;
+    }
+
+    .animated-icon1 span {
+      background: #e65100;
+    }
+
+    .animated-icon2 span {
+      background: #e3f2fd;
+    }
+
+    .animated-icon3 span {
+      background: #f3e5f5;
+    }
+
+    .animated-icon1 span:nth-child(1) {
+      top: 0px;
+    }
+
+    .animated-icon1 span:nth-child(2) {
+      top: 10px;
+    }
+
+    .animated-icon1 span:nth-child(3) {
+      top: 20px;
+    }
+
+    .animated-icon1.open span:nth-child(1) {
+      top: 11px;
+      -webkit-transform: rotate(135deg);
+      -moz-transform: rotate(135deg);
+      -o-transform: rotate(135deg);
+      transform: rotate(135deg);
+    }
+
+    .animated-icon1.open span:nth-child(2) {
+      opacity: 0;
+      left: -60px;
+    }
+
+    .animated-icon1.open span:nth-child(3) {
+      top: 11px;
+      -webkit-transform: rotate(-135deg);
+      -moz-transform: rotate(-135deg);
+      -o-transform: rotate(-135deg);
+      transform: rotate(-135deg);
+    }
+
+    /* Icon 3*/
+
+    .animated-icon2 span:nth-child(1) {
+      top: 0px;
+    }
+
+    .animated-icon2 span:nth-child(2),
+    .animated-icon2 span:nth-child(3) {
+      top: 10px;
+    }
+
+    .animated-icon2 span:nth-child(4) {
+      top: 20px;
+    }
+
+    .animated-icon2.open span:nth-child(1) {
+      top: 11px;
+      width: 0%;
+      left: 50%;
+    }
+
+    .animated-icon2.open span:nth-child(2) {
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+    .animated-icon2.open span:nth-child(3) {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+
+    .animated-icon2.open span:nth-child(4) {
+      top: 11px;
+      width: 0%;
+      left: 50%;
+    }
+
+    /* Icon 4 */
+
+    .animated-icon3 span:nth-child(1) {
+      top: 0px;
+      -webkit-transform-origin: left center;
+      -moz-transform-origin: left center;
+      -o-transform-origin: left center;
+      transform-origin: left center;
+    }
+
+    .animated-icon3 span:nth-child(2) {
+      top: 10px;
+      -webkit-transform-origin: left center;
+      -moz-transform-origin: left center;
+      -o-transform-origin: left center;
+      transform-origin: left center;
+    }
+
+    .animated-icon3 span:nth-child(3) {
+      top: 20px;
+      -webkit-transform-origin: left center;
+      -moz-transform-origin: left center;
+      -o-transform-origin: left center;
+      transform-origin: left center;
+    }
+
+    .animated-icon3.open span:nth-child(1) {
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+      top: 0px;
+      left: 8px;
+    }
+
+    .animated-icon3.open span:nth-child(2) {
+      width: 0%;
+      opacity: 0;
+    }
+
+    .animated-icon3.open span:nth-child(3) {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      top: 21px;
+      left: 8px;
+    }
+
+    /* End of Nav bar CSs*/
+  </style>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Sniglet|Raleway:900);
+
+    nav {
+      font-family: 'Sniglet', cursive;
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!--Navbar-->
+  <nav class="navbar navbar-dark  indigo darken-2" style="background-color: #ffa500; margin: 10px;">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#">Francomobile</a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler third-button" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent22" aria-controls="navbarSupportedContent22" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <div class="animated-icon3"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent22">
+
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="./Home_page.html">Home Page<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./profile.html">My Profile</a>
+        </li>
+        <li class="nav-item">
+          <p class="nav-link" id="logout">Log Out</p>
+        </li>
+      </ul>
+      <!-- Links -->
+    </div>
+    <!-- Collapsible content -->
+  </nav>
+
+
+
+
+  <div>
+    <br>
+    <h1 style="font-size: 30pt; color: #d88c00; text-align: center">CONTACT US</h1>
+  </div>
+
+  <div class="main-container">
+
+<!--
+    <div class="fish" id="fish"></div>
+    <div class="fish" id="fish2"></div>
+-->
+
+
+    <form id="contactForm">
+      <p id="name1"></p>
+
+      <input type="text" id="name" placeholder="Name">
+      <br>
+      <p id="age1"></p>
+      <input type="text" id="cell" placeholder="Cell Phone">
+      <br>
+<!--
+      <p id="country1"></p>
+      <input type="text" id="email" placeholder="Email Address">
+      <br>
+-->
+      <p id="gender1"></p>
+      <input type="text" id="message" placeholder="Message">
+      <br>
+
+
+
+      <input type="submit" style="height: 60px">
+    </form>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div style="clear: both">
+
+    <p style="font-family: sans-serif; text-align: center">© 2019 Francomobile</p>
+  </div>
+    <script>
+        function setFormListener(form) {
+            document.getElementById("contactForm").addEventListener("submit", function (e) {
+                e.preventDefault();
+                var name = document.getElementById("name").value;
+                var cell_num = document.getElementById("cell").value;
+                var message1 = document.getElementById("message").value;
+
+
+
+                firebase.auth().onAuthStateChanged(function (user) {
+                    //write the answers, then generate recommendations
+                    console.log(user.uid);
+                    db.collection("user").doc(user.uid).set({
+                        feedback: [name, cell_num, message1]
+                    }, {
+                        merge: true
+                    })
+
+                });
+            })
+        }
+    </script>
+    
+   <!--   Logout function -->
+    <script>
+        $("#logout").click(function () {
+            firebase.auth().signOut();
+            alert("Successfully logged out!");
+            console.log("Successfully logged out!");
+            window.location.href = './login.html';
+        })
+    </script>
+  <script>
+    //    createUser();
+    setFormListener("contactForm");
+  </script>
+</body>
+
+</html>

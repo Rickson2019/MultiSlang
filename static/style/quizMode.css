@@ -1,0 +1,579 @@
+#reportInput {
+            font-size: 15pt;
+            width: 85vw;
+
+            position: absolute;
+            top: 45vh;
+            left: 5vw;
+            background-color: #ffca89;
+            height: 25vh;
+            font-family: 'Gloria Hallelujah', cursive;
+
+        }
+
+        @import url('https://fonts.googleapis.com/css?family=Acme&display=swap');
+/*        @import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');*/
+        @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+        #frenchWordDisplayDiv {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #englishMeaningDisplayDiv {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #englishExplanation {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #previous {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #picDiv{
+            margin:0;
+            margin-left: 5vw ;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            object-fit: cover;
+        }
+
+ 
+
+        #picDiv img{
+            width: 45vw;
+            max-height: 50%;
+            margin:0;
+        }
+
+        @media screen and (min-device-width:1000px) and (max-width: 2000px) {
+            #footer {
+                margin-top: 30px;
+            }
+
+            body {
+                text-align: center;
+                background-color: #ffffd4;
+                margin: 0;
+            }
+
+            #frenchWordDisplayDiv {
+                text-align: center;
+                font-size: 75pt;
+            }
+
+            #englishMeaningDisplayDiv {
+                text-align: center;
+                font-size: 45pt;
+            }
+
+            #englishExplanation {
+                text-align: center;
+                font-size: 40pt;
+                color: tomato
+            }
+
+            .grey {
+                height: 3vh;
+                width: 100%;
+                background-image: repeating-linear-gradient(#ff6200, #ffcc00);
+            }
+
+       
+
+            label {
+                /* Presentation */
+                font-size: 90px
+            }
+
+            /* Required Styling */
+            label input[type="checkbox"] {
+                display: none;
+            }
+
+            .custom-checkbox {
+                margin-left: 2em;
+                position: relative;
+                cursor: pointer;
+            }
+
+            .custom-checkbox .glyphicon {
+                color: gold;
+                position: absolute;
+                top: 0.4em;
+                left: -1.25em;
+                font-size: 0.75em;
+            }
+
+            .custom-checkbox .glyphicon-star-empty {
+                color: gray;
+            }
+
+            .custom-checkbox .glyphicon-star {
+                opacity: 0;
+                transition: opacity 0.2s ease-in-out;
+            }
+
+            /* .custom-checkbox:hover .glyphicon-star {
+            opacity: 0.5;
+        } */
+            .custom-checkbox input[type="checkbox"]:checked~.glyphicon-star {
+                opacity: 1;
+            }
+
+            #favouriteBtnDiv {
+                /* width:7vw; */
+                display: block;
+                position: absolute;
+                top: -2vh;
+                right: 0vw;
+            }
+
+            #showLastNextContainer {
+                display: inline-flex;
+                color: red;
+                font-size: 25pt;
+                font-family: 'Roboto', sans-serif;
+            }
+
+            #progressStatus {
+                position: absolute;
+                left: 0vw;
+                /*            background: cornsilk;*/
+                display: block;
+                height: 3vh;
+                color: salmon;
+                font-family: 'Gloria Hallelujah', cursive;
+            }
+
+            #homeBtn {
+                left: 0vw;
+                width: 6vw;
+            }
+
+            #howManyToGo {
+                /* line-height: -50%; */
+                position: relative;
+                
+                left: 0vw;
+                font-size: 20pt;
+            }
+
+            #previous {
+                color: red;
+                font-size: 25pt;
+                font-family: 'Roboto', sans-serif;
+                padding-right: 7px;
+            }
+
+            #lastCard {
+                font-size: 25pt;
+
+                border: none;
+                background-color: #ffcc00;
+                cursor: pointer;
+                height: 50px;
+                width: 150px;
+                color: #ff4c00;
+                box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+                text-align: center;
+            }
+
+            #SLASH {
+
+                border: none;
+                background-color: #ffc176;
+                font-size: 40px;
+                cursor: pointer;
+                height: 50px;
+                width: 350px;
+                color: #ff6200;
+                box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+                font-size: 11pt;
+                text-align: center;
+                font-family: 'Acme', sans-serif;
+            }
+
+            #nextCard {
+
+                border: none;
+                background-color: #ffc176;
+                font-size: 40px;
+                cursor: pointer;
+                height: 50px;
+                width: 350px;
+                color: #ff6200;
+                box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+                font-size: 11pt;
+                text-align: center;
+                font-family: 'Acme', sans-serif;
+            }
+
+            #reportBug {
+                display: block;
+                position: absolute;
+                
+                width: 7vw;
+                right: 13vw;
+                top: 2vh;
+            }
+
+            #buttons {
+                margin-top: 35px;
+                margin-bottom: 55px;
+            }
+        }
+
+        @media screen and (min-device-width: 422px) and (max-device-width: 999px) {
+            #footer {
+                margin-top: 80px;
+            }
+
+            body {
+                text-align: center;
+                background-color: #ffffd4;
+            }
+
+            #frenchWordDisplayDiv {
+                margin-top: 70px;
+                text-align: center;
+                font-size: 70pt;
+            }
+
+            #englishMeaningDisplayDiv {
+                text-align: center;
+                font-size: 45pt;
+            }
+
+            #englishExplanation {
+                text-align: center;
+                font-size: 40pt;
+                color: tomato
+            }
+
+            .grey {
+                height: 2vh;
+                width: 100%;
+                background-image: repeating-linear-gradient(#ff6200, #ffcc00);
+            }
+
+    
+
+            label {
+                /* Presentation */
+                font-size: 90px
+            }
+
+            /* Required Styling */
+            label input[type="checkbox"] {
+                display: none;
+            }
+
+            .custom-checkbox {
+                margin-left: 2em;
+                position: relative;
+                cursor: pointer;
+            }
+
+            .custom-checkbox .glyphicon {
+                color: gold;
+                position: absolute;
+                top: 0.4em;
+                left: -1.25em;
+                font-size: 0.75em;
+            }
+
+            .custom-checkbox .glyphicon-star-empty {
+                color: gray;
+            }
+
+            .custom-checkbox .glyphicon-star {
+                opacity: 0;
+                transition: opacity 0.2s ease-in-out;
+            }
+
+            /* .custom-checkbox:hover .glyphicon-star {
+            opacity: 0.5;
+        } */
+            .custom-checkbox input[type="checkbox"]:checked~.glyphicon-star {
+                opacity: 1;
+            }
+
+            #favouriteBtnDiv {
+                display: block;
+                position: absolute;
+                /*            margin-top: -80px;*/
+                /*            padding-left: 40px;*/
+                right: -8vw;
+                top: 20vh;
+                width: 20vw;
+
+            }
+
+            #showLastNextContainer {
+                display: inline-flex;
+            }
+
+            #progressStatus {
+                position: absolute;
+                left: 0vw;
+                /*            background: cornsilk;*/
+                display: block;
+                height: 3vh;
+                color: salmon;
+                font-family: 'Gloria Hallelujah', cursive;
+            }
+
+            #homeBtn {
+                left: 0vw;
+                width: 20vw;
+            }
+
+            #howManyToGo {
+                /* line-height: -50%; */
+                position: relative;
+                ;
+                left: 10vw;
+                font-size: 20pt;
+            }
+
+            #previous {
+                color: red;
+                font-size: 25pt;
+                margin-left: -75px;
+                padding-right: 5px;
+            }
+
+            #lastCard {
+                font-size: 25pt;
+                background: #ff6200;
+
+            }
+
+            #SLASH {
+
+                border: none;
+                background-color: #ffc176;
+                font-size: 40px;
+                cursor: pointer;
+                height: 50px;
+                width: 250px;
+                color: #ff6200;
+                box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+                font-size: 11pt;
+                text-align: center;
+                font-family: 'Acme', sans-serif;
+            }
+
+            #nextCard {
+
+                border: none;
+                background-color: #ffc176;
+                font-size: 40px;
+                cursor: pointer;
+                height: 50px;
+                width: 250px;
+                color: #ff6200;
+                box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+                font-size: 11pt;
+                text-align: center;
+                font-family: 'Acme', sans-serif;
+                margin-top: 10px;
+            }
+
+            #reportBug {
+                display: block;
+                position: absolute;
+                ;
+                width: 18vw;
+                right: 2vw;
+                top: 2vh;
+            }
+
+            #buttons {
+                margin-top: 20px;
+            }
+
+        }
+
+        @media screen and (min-device-width: 250px) and (max-device-width: 421px) {
+            #footer {
+                margin-top: 80px;
+            }
+
+            body {
+                text-align: center;
+                background-color: #ffffd4;
+            }
+
+            #frenchWordDisplayDiv {
+                margin-top: 48px;
+                text-align: center;
+                font-size: 44pt;
+            }
+
+            #englishMeaningDisplayDiv {
+                text-align: center;
+                font-size: 37pt;
+            }
+
+            #englishExplanation {
+                text-align: center;
+                font-size: 40pt;
+                color: tomato
+            }
+
+            .grey {
+                height: 2vh;
+                width: 100%;
+                background-image: repeating-linear-gradient(#ff6200, #ffcc00);
+            }
+
+  
+
+            label {
+                /* Presentation */
+                font-size: 90px
+            }
+
+            /* Required Styling */
+            label input[type="checkbox"] {
+                display: none;
+            }
+
+            .custom-checkbox {
+                margin-left: 2em;
+                position: relative;
+                cursor: pointer;
+            }
+
+            .custom-checkbox .glyphicon {
+                color: gold;
+                position: absolute;
+                top: 0.4em;
+                left: -1.25em;
+                font-size: 0.75em;
+            }
+
+            .custom-checkbox .glyphicon-star-empty {
+                color: gray;
+            }
+
+            .custom-checkbox .glyphicon-star {
+                opacity: 0;
+                transition: opacity 0.2s ease-in-out;
+            }
+
+            /* .custom-checkbox:hover .glyphicon-star {
+            opacity: 0.5;
+        } */
+            .custom-checkbox input[type="checkbox"]:checked~.glyphicon-star {
+                opacity: 1;
+            }
+
+            #favouriteBtnDiv {
+                display: block;
+                position: absolute;
+                /* margin-top: 20px; */
+                top: 2vh;
+                /*            padding-left: 40px;*/
+                right: -5vw;
+
+
+            }
+
+            #showLastNextContainer {
+                display: inline-flex;
+            }
+
+            #progressStatus {
+                position: absolute;
+                left: 0vw;
+                /*            background: cornsilk;*/
+                display: block;
+                height: 3vh;
+
+                color: salmon;
+                font-family: 'Gloria Hallelujah', cursive;
+            }
+
+            #homeBtn {
+                left: 0vw;
+                width: 20vw;
+            }
+
+            #howManyToGo {
+                /* line-height: -50%; */
+                position: relative;
+                top: 3vh;
+                left:12vw;
+                font-size: 15pt;
+            }
+
+            #previous {
+                color: red;
+                font-size: 15pt;
+                margin-left: 60px;
+                padding-right: 7px;
+            }
+
+            #lastCard {
+                font-size: 15pt;
+                border: none;
+                background-color: #ffcc00;
+                cursor: pointer;
+                height: 30px;
+                width: 100px;
+                color: #ff4c00;
+                box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+                text-align: center;
+
+            }
+
+            #SLASH {
+
+                border: none;
+                background-color: #ffc176;
+                font-size: 40px;
+                cursor: pointer;
+                height: 50px;
+                width: 250px;
+                color: #ff6200;
+                box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+                font-size: 11pt;
+                text-align: center;
+                font-family: 'Acme', sans-serif;
+            }
+
+            #nextCard {
+
+                border: none;
+                background-color: #ffc176;
+                font-size: 40px;
+                cursor: pointer;
+                height: 50px;
+                width: 250px;
+                color: #ff6200;
+                box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+                font-size: 11pt;
+                text-align: center;
+                font-family: 'Acme', sans-serif;
+                margin-top: 10px;
+            }
+
+            #reportBug {
+                display: block;
+                position: absolute;
+                ;
+                width: 10vw;
+                right: 2vw;
+                top: 1vh;
+            }
+
+            #buttons {
+                margin-top: 12px;
+            }
+
+        }

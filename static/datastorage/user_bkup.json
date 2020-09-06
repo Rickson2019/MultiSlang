@@ -1,0 +1,2 @@
+{"_id":{"$oid":"5ee332c4b999360e9098ca5b"},"announcer":"chloe","tracker":{"essential_french":{"$numberInt":"7"}},"username":"Rickson","password":"123123","email":"JudaoZhong@gmail.com","phoneno":"1-7789179709","firstname":"Judao","lastname":"Zhong","__v":{"$numberInt":"0"},"favorite":["","Terre","août","un"],"passed":["attaque","août","artiste"]}
+{"_id":{"$oid":"5eeebc52dc773823e4fea627"},"favorite":["attaque"]}

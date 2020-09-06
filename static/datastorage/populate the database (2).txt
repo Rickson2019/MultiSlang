@@ -1,0 +1,140 @@
+var adulte = db.collection("wordlist_fr").doc("all").collection("starts_with_A").doc("adulte");
+      adulte.set({
+        "english_meaning": "adult",
+        "pronounciation":"/a.dylt/",
+        "english_explanation": "Biologically, an adult is a human or other organism that has reached sexual maturity.",
+        "french_explanation" :  "Dans son sens le plus général, un adulte est un individu biologiquement stable qui, ayant acquis sa maturité sexuelle, est susceptible de se reproduire. L'âge adulte est l'une des périodes de la vie.",
+      })
+
+var aeroport= db.collection("wordlist_fr").doc("all").collection("starts_with_A").doc("aéroport");
+      aeroport.set({
+        "english_meaning": "airport",
+        "pronounciation":/aeʁɔ.pɔʁ/,
+        "english_explanation": "An airport is an aerodrome with extended facilities, mostly for commercial air transport.",
+        "french_explanation" :  "Un aéroport est l'ensemble des bâtiments et des installations qui servent au traitement des passagers ou du fret aérien situés sur un aérodrome. Le bâtiment principal est, généralement, l'aérogare par où transitent les passagers (ou le fret) entre les moyens de transport au sol et les avions.",
+      })
+      
+var agriculture= db.collection("wordlist_fr").doc("all").collection("starts_with_A").doc("agriculture");
+      agriculture.set({
+        "english_meaning": "agriculture",
+        
+      })
+      
+var agent_comptable= db.collection("wordlist_fr").doc("all").collection("starts_with_A").doc("agent comptable");
+      agent_comptable.set({
+        "english_meaning": "accountant",
+        "english_explanation": "An accountant is a practitioner of accounting or accountancy, which is the measurement, disclosure or provision of assurance about financial information that helps managers, investors, tax authorities and others make decisions about allocating resource(s).",
+       
+      })      
+
+var avion= db.collection("wordlist_fr").doc("all").collection("starts_with_A").doc("avion");
+      avion.set({
+        "english_meaning": "plane",
+        
+       
+      })   
+
+var acheter = db.collection("wordlist_fr").doc("all").collection("basic").doc("acheter");
+    acheter.set({
+    "english_meaning" : "buy",
+    "french_sentence" : "Je voudrais acheter de la confiture.",
+    "english_explanation": "I would like to buy some jam.",
+    })
+    
+var aéroport = db.collection("wordlist_fr").doc("all").collection("basic").doc("aéroport");
+    aéroport.set({
+    "english_meaning" : "airport",
+    "french_sentence" : "un aéroport français.",
+    "english_explanation": "a French airport.",
+    })  
+    
+ 
+
+var Acteur = db.collection("wordlist_fr").doc("all").collection("basic").doc("Acteur");
+    Acteur.set({
+    "english_meaning" : "Actor",
+    "gender" : "m",
+    })  
+
+var Après_midi = db.collection("wordlist_fr").doc("all").collection("basic").doc("Après-midi");
+    Après_midi.set({
+    "english_meaning" : "afternoon",
+    "gender" : "m",
+    })      
+
+var Appartement	 = db.collection("wordlist_fr").doc("all").collection("basic").doc("Appartement	");
+    Appartement.set({
+    "english_meaning" : "appartment",
+    "gender" : "m",
+    })
+
+var pomme	 = db.collection("wordlist_fr").doc("all").collection("basic").doc("pomme");
+    pomme.set({
+    "english_meaning" : "apple",
+    "gender" : "m",
+    })
+
+var avril	 = db.collection("wordlist_fr").doc("all").collection("basic").doc("avril");
+    avril.set({
+    "english_meaning" : "april",
+    "gender" : "m",
+    })  
+
+
+
+
+var x	 = db.collection("wordlist_fr").doc("all").collection("basic").doc("artiste");
+    x.set({
+    "english_meaning" : "artist",
+    "gender" : "m",
+    "pronounciation":"/aʁ.tist/",
+    })                                                    
+
+var x	 = db.collection("wordlist_fr").doc("all").collection("basic").doc("attaque");
+    x.set({
+    "english_meaning" : "attack",
+    "gender" : "f",
+    "pronounciation":"/a.tak/",
+    })     
+
+var x	 = db.collection("wordlist_fr").doc("all").collection("basic").doc("août");
+    x.set({
+    "english_meaning" : "August",
+    "gender" : "m",
+    "pronounciation":"/u/, /ut/",
+    })     
+
+var x	 = db.collection("wordlist_fr").doc("all").collection("basic").doc("écrivain");
+    x.set({
+    "english_meaning" : "writer",
+    "gender" : "m",
+    "pronounciation":"/e.kʁi.vɛ̃/",
+    })
+
+var x	 = db.collection("wordlist_fr").doc("all").collection("basic").doc("Terre");
+    x.set({
+    "english_meaning" : "Earth",
+    "gender" : "f",
+    "pronounciation":"/tɛʁ/",
+    })
+
+var x	 = db.collection("wordlist_fr").doc("all").collection("basic").doc("le ciel");
+    x.set({
+    "english_meaning" : "the sky(heaven)",
+    "gender" : "m",
+    "pronounciation":"/sjɛl/",
+    })
+
+var x	 = db.collection("wordlist_fr").doc("all").collection("basic").doc("blanc");
+    x.set({
+    "english_meaning" : "white",
+    "gender" : "m",
+    "pronounciation":"/blɑ̃/",
+    }) 
+
+var x	 = db.collection("wordlist_fr").doc("all").collection("basic").doc("point");
+    x.set({
+    "english_meaning" : "point(item, location, spot, dot, matter)",
+    "gender" : "m",
+    "pronounciation":"/pwɛ̃/",
+    })                      

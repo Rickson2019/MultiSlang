@@ -1,0 +1,238 @@
+<html>
+
+<head>
+
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+
+
+  <title>Home_Page</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+
+  <!--Jquery-->
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+
+  <!--Boot Strap Import-->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+    integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous">
+    </script>
+  <!--BootStrap-->
+
+  <script src="./script/firebaseConfig.js"></script>
+
+  <link href="./style/Home_page.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+  <div style="text-align: center">
+
+    <!--    <img src="./img/Francomobile%20Logo.png">-->
+    <!--Navbar-->
+    <nav class="navbar navbar-dark  indigo darken-2" style="background-color: #ffa500; margin: 10px;">
+
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="#" style="font-size: 40pt">Francomobile</a>
+
+      <!-- Collapse button -->
+      <button class="navbar-toggler third-button" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent22" aria-controls="navbarSupportedContent22" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <div class="animated-icon3"><span></span><span></span><span></span></div>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent22">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item active">
+            <a class="nav-link" href="./profile.html" style="font-size: 35pt">My Profile<span
+                class="sr-only">(current)</span></a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="./contact_us%20_afterlogin.html" style="font-size: 35pt">Need Help?</a>
+          </li>
+
+          <li class="nav-item">
+            <p class="nav-link" id="logout" style="font-size: 35pt">Log Out</p>
+          </li>
+        </ul>
+
+      </div>
+
+    </nav>
+
+
+
+
+    <br>
+
+
+    <h1 style="font-size: 40pt">Review</h1>
+    <div class="flip" id="savedWords">
+      <div class="front" style="background-image: url(./img/cards/card2.jpg)">
+        <h1 class="text-shadow">Saved Words</h1>
+      </div>
+      <div class="back">
+        <h2>Review The Words Often</h2>
+        <p>
+          So you will remember them better!
+        </p>
+      </div>
+    </div>
+    <br>
+    <br>
+
+
+
+
+
+
+    <!-- horizontal flip -->
+
+    <h1 style="font-size: 40pt">Choose a wordlist</h1>
+    <!-- <div class="flip wordList" id="basic">
+      <div class="front" style="background-image: url(img/cards/card.jpg)">
+        <h1 class="text-shadow">basic</h1>
+      </div>
+      <div class="back">
+        <h2>Baisic Words You Need to Know</h2>
+        <p>
+
+        </p>
+      </div>
+    </div> -->
+
+    <!-- <div class="flip wordList" id="countries">
+      <div class="front" style="background-image: url(./img/cards/countries.jpeg)">
+        <h1 class="text-shadow">Countries</h1>
+      </div>
+      <div class="back">
+        <h2>Know words about the countries in the world!</h2>
+        <p>
+        </p>
+      </div>
+    </div> -->
+
+    <div class="flip wordList" id="essential_french">
+      <div class="front" style="background-image: url(./img/cards/card4.jpg)">
+        <h1 class="text-shadow">essential_french</h1>
+      </div>
+      <div class="back">
+        <h2>A very very long list</h2>
+        <p>Good luck!
+        </p>
+      </div>
+    </div>
+<!-- 
+    <div class="flip quiz" id="essential_french_quiz">
+      <div class="front" style="background-image: url(./img/cards/card4.jpg)">
+        <h1 class="text-shadow">essential_french quiz!</h1>
+      </div>
+      <div class="back">
+        <h2>essential_french</h2>
+        <p>quiz!</p>
+      </div>
+    </div> -->
+
+    <br>
+    <br>
+
+
+    <div>
+      <p style="font-family: sans-serif; text-align: center">© 2020 Francomobile</p>
+    </div>
+  </div>
+
+  <div id="studyMode">
+    <span>Pick one study mode</span>
+    <button id="flashCardsMode">Flash Cards</button>
+    <button id="quizMode">Picture Challenges</button>
+  </div>
+
+
+
+
+  <script>
+
+    $("#flashCardsMode").click(()=>{
+      window.location.href = "./flashCards.html"
+    })
+
+    $("#quizMode").click(()=>{
+      window.location.href = "./quizMode.html"
+    })
+    
+
+    $(document).ready(function () {
+      $("body").hide();
+      setTimeout(() => {
+        $("body").fadeIn(2500);
+      }, 11);
+    })
+
+    var chosenWordListName;
+
+
+    $("#flashCards").hide();
+    $("#studyMode").hide()
+
+
+    $(".quiz").click(()=>{
+      localStorage.setItem("chosenWordListName", "essential_french");
+      window.location.href = "./quizMode.html"
+    })
+
+
+
+    $(".wordList").click(function (e) {
+      chosenWordListName =  this.id
+      $("#studyMode").toggle()
+      
+      localStorage.setItem("chosenWordListName", chosenWordListName);
+
+      console.log(localStorage.chosenWordListName)
+      // window.location.href = "./flashCards.html"
+
+    })
+
+    
+
+    // $("#favouriteWords").hide();
+    $("#savedWords").click(function () {
+      window.location.href = "./favourite.html";
+    })
+
+    
+
+  // })
+  </script>
+
+  <!-- Logout function -->
+  <script>
+     $("#logout").click(function () {
+      $.ajax({
+        type: "GET",
+        url: "/user/logout",
+        success: function (response) {
+            window.location.href = "/login.html"
+        }
+      });
+    })
+  </script>
+
+</body>
+
+</html>

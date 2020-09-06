@@ -1,0 +1,4907 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+     <title>
+        flash cards
+    </title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-storage.js"></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-analytics.js"></script> -->
+
+    <!-- <script src="./script/firebaseConfig.js"></script> -->
+
+
+
+      <!--Jquery-->
+      <script src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+  <!--Boot Strap Import-->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+      integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
+      crossorigin="anonymous"></script>
+  <!--BootStrap-->
+
+  <script src="script/firebaseConfig.js"></script>
+  </head>
+  <body>
+    <button id="populate">populate</button>
+    
+    <script>
+      const db=firebase.firestore();
+      var essf = [
+  {
+    "id": "Acteur",
+    "english_meaning": "Actor",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ak.tœʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "Adjectif",
+    "english_meaning": "Adjective",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ad.ʒɛk.tif/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "Adulte",
+    "english_meaning": "Adult",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/a.dylt/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "Après-midi",
+    "english_meaning": "afternoon",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/a.pʁɛ mi.di/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "aéroport",
+    "english_meaning": "Airport",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/aeʁɔ.pɔʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "Animal",
+    "english_meaning": "Animal",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/a.ni.mal/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "Appartement",
+    "english_meaning": "Apartment",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/a.paʁ.tə.mɑ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "pomme",
+    "english_meaning": "Apple",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/Pɔm/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "Avril",
+    "english_meaning": "April",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/a.vʁil/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "Bras",
+    "english_meaning": "Arms",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/Bʁɑ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "armée",
+    "english_meaning": "Army",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/aʁ.me/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "tante",
+    "english_meaning": "Aunt",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/Tɑt/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "artiste",
+    "english_meaning": "Artist",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/aʁ.tist/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "attaque",
+    "english_meaning": "Attack (Assault, Stroke, Offensive)",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/a.tak/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "août",
+    "english_meaning": "August",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/u/, /ut/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "écrivain",
+    "english_meaning": "Writer",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/e.kʁi.vɛ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "Terre",
+    "english_meaning": "Earth",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/tɛʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "le ciel",
+    "english_meaning": "Sky (Heaven)",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/sjɛl/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "un",
+    "english_meaning": "One",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/œ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "blanc",
+    "english_meaning": "White",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/blɑ̃/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "point",
+    "english_meaning": "Point (item, location, spot, dot, matter)",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/pwɛ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "étoile",
+    "english_meaning": "Star",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/e.twal/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "vendredi",
+    "english_meaning": "Friday",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/vɑ̃.dʁə.di/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "serveur",
+    "english_meaning": "Server (host, waiter, barman)",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/sɛʁ.vœʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "se lever",
+    "english_meaning": "Get up (stand up, rise)",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/lə.ve/",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "dos",
+    "english_meaning": "Back (backside, reverse side)",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/do/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "douleur",
+    "english_meaning": "Pain (suffering, sorrow)",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/du.lœʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "compter",
+    "english_meaning": "Count",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "[kɔ̃.te]",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "jeune",
+    "english_meaning": "Young",
+    "part_of_speech": "adj",
+    "gender": null,
+    "pronounciation": "/ʒœn/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "cent un",
+    "english_meaning": "101",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/sɑ̃̃.tœ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "chien",
+    "english_meaning": "Dog",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ʃjɛ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "parc",
+    "english_meaning": "Park",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/paʁk/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "mars",
+    "english_meaning": "March",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/maʁs/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "vingt",
+    "english_meaning": "Twenty",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/vɛ̃/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "peu profond",
+    "english_meaning": "Shallow",
+    "part_of_speech": "adj",
+    "gender": null,
+    "pronounciation": "/pø pʁɔ.fɔ̃/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "fleuve",
+    "english_meaning": "River",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/flœv/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "glace",
+    "english_meaning": "Ice (ice cream)",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/ɡlas/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "fondre",
+    "english_meaning": "to melt",
+    "part_of_speech": "verb",
+    "gender": null,
+    "pronounciation": "[fɔ̃dʁ]",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "verbe",
+    "english_meaning": "verb",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "verbe",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "embrasser",
+    "english_meaning": "kiss",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "[ɑ̃.bʁa.se]",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "cou",
+    "english_meaning": "neck",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ku/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "toucher",
+    "english_meaning": "to touch",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "[tu.ʃe]",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "corps",
+    "english_meaning": "body",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/kɔʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "janvier",
+    "english_meaning": "January",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ʒɑ̃.vje/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "premier",
+    "english_meaning": "first",
+    "part_of_speech": "ord. number",
+    "gender": null,
+    "pronounciation": "/pʁə.mje/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "nouveau",
+    "english_meaning": "new",
+    "part_of_speech": "adj IRR. masculine before vowel is nouvel",
+    "gender": null,
+    "pronounciation": "/nu.vo/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "sport",
+    "english_meaning": "sport",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/spɔʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "exercice",
+    "english_meaning": "exercise (physical, training, homework)",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ɛɡ.zɛʁ.sis/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "sain",
+    "english_meaning": "healthy",
+    "part_of_speech": "adj",
+    "gender": null,
+    "pronounciation": "/sɛ̃/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "cinq",
+    "english_meaning": "five",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/sɛ̃k/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "pied",
+    "english_meaning": "foot",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/pje/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "petit",
+    "english_meaning": "small",
+    "part_of_speech": "adj",
+    "gender": null,
+    "pronounciation": "/pə.ti/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "femme",
+    "english_meaning": "woman, wife",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/fam/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "oreille",
+    "english_meaning": "ear",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/ɔ.ʁɛj/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "bague",
+    "english_meaning": "ring",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/baɡ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "serré",
+    "english_meaning": "tight (close, narrow, squeezed)",
+    "part_of_speech": "adj",
+    "gender": null,
+    "pronounciation": "/se.ʁe/ ou /sɛ.ʁe/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "jupe",
+    "english_meaning": "skirt",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/ʒyp/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "sexe",
+    "english_meaning": "sex (gender)",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/sɛks/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "mariage",
+    "english_meaning": "marriage",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ma.ʁjaʒ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "sourd",
+    "english_meaning": "deaf",
+    "part_of_speech": "adj",
+    "gender": null,
+    "pronounciation": "/suʁd/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "parent",
+    "english_meaning": "parent",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/pa.ʁɑ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "bruyant",
+    "english_meaning": "noisy, loud",
+    "part_of_speech": "adj",
+    "gender": null,
+    "pronounciation": "/bʁɥi.jɑ̃/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "téléphone",
+    "english_meaning": "telephone",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/te.le.fɔn/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "bébé",
+    "english_meaning": "baby",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/be.be/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "pleurer",
+    "english_meaning": "to cry, weep (grieve)",
+    "part_of_speech": "verb",
+    "gender": null,
+    "pronounciation": "[plœ.ʁe]",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "larme",
+    "english_meaning": "tear, teardrop",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/laʁm/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "sombre",
+    "english_meaning": "dark",
+    "part_of_speech": "adj",
+    "gender": null,
+    "pronounciation": "sɔ̃bʁ",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "théâtre",
+    "english_meaning": "theater",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/te.ɑtʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "roi",
+    "english_meaning": "king",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ʁwa/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "aimer",
+    "english_meaning": "to love, like",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "[e.me]",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "nuit",
+    "english_meaning": "night",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/nɥi/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "nom",
+    "english_meaning": "name (noun, title)",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/nɔ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "hiver",
+    "english_meaning": "winter",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/i.vɛʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "deuxième",
+    "english_meaning": "second",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/dø.zjɛm/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "février",
+    "english_meaning": "February",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/fe.vʁi.je/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "marcher",
+    "english_meaning": "to walk",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/maʁ.ʃe/",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "froid",
+    "english_meaning": "cold",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/fʁwa/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "nord",
+    "english_meaning": "north",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/nɔʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "ville",
+    "english_meaning": "city (town)",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/vil/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "pluie",
+    "english_meaning": "rain",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/plɥi/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "mouiller",
+    "english_meaning": "to wet",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/mu.je/",
+    "type": "Adjective French Frequency Vocabulary verb"
+  },
+  {
+    "id": "gris",
+    "english_meaning": "grey",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/ɡʁi/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "acheter",
+    "english_meaning": "to buy, purchase",
+    "part_of_speech": "changes to achète in boot",
+    "gender": null,
+    "pronounciation": "[a.ʃø.te]",
+    "type": "French Frequency Vocabulary irregular verb"
+  },
+  {
+    "id": "cadeau",
+    "english_meaning": "gift",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ka.do/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "vélo",
+    "english_meaning": "bike",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ve.lo/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "il elle",
+    "english_meaning": "he/her",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/il/ /ɛl/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "argent",
+    "english_meaning": "money (cash, silver)",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/aʁ.ʒɑ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "habillement",
+    "english_meaning": "clothes, apparel",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/abijmɑ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "magasin",
+    "english_meaning": "store, shop",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ma.ɡa.zɛ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "Signe",
+    "english_meaning": "sign",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ Siɲ /",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "vendre",
+    "english_meaning": "to sell",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "[vɑ̃dʁ]",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "long",
+    "english_meaning": "long",
+    "part_of_speech": "IRR -- f. longue",
+    "gender": null,
+    "pronounciation": "/lɔ̃/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "desserrer",
+    "english_meaning": "to loosen (release, relax)",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/de.se.ʁe/",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "pantalon",
+    "english_meaning": "pant",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pɑ̃.ta.lɔ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "poche",
+    "english_meaning": "pocket",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/pɔʃ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "prix",
+    "english_meaning": "price",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/pʁi/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "quatre-vingts",
+    "english_meaning": "eighty",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/ka.trə.vɛ̃/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "soixante-dix",
+    "english_meaning": "seventy",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/swa.sɑ̃t dis/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "million",
+    "english_meaning": "million",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": null,
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "année",
+    "english_meaning": "year",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/a.ne/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "ancien",
+    "english_meaning": "former, old (ancient, past, previous, historical)",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/ɑ̃.sjɛ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "dur",
+    "english_meaning": "hard (difficult, tough)",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/dyʁ/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "pierre",
+    "english_meaning": "rock",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/pjɛʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "montagne",
+    "english_meaning": "mountain",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/mɔ̃.taɲ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "tomber",
+    "english_meaning": "to fall (drop, sink, tumble)",
+    "part_of_speech": "être verb",
+    "gender": null,
+    "pronounciation": "[tɔ̃.be]",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "mort",
+    "english_meaning": "death",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/mɔʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "camion",
+    "english_meaning": "truck",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ka.mjɔ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "pneu",
+    "english_meaning": "tire",
+    "part_of_speech": "nb. pl. -s",
+    "gender": "m",
+    "pronounciation": "/pnø/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "porter",
+    "english_meaning": "to carry",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "[pɔʁ.te]",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "poids",
+    "english_meaning": "weight (burden, load)",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/pwa/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "zéro",
+    "english_meaning": "zero",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/ze.ʁo/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "courbé",
+    "english_meaning": "curved (bent)",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/kuʁ.be/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "cercle",
+    "english_meaning": "circle",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/sɛʁkl/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "nombre",
+    "english_meaning": "number",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/nɔ̃bʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "juin",
+    "english_meaning": "June",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ʒɥɛ̃/ ou /ʒy.œ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "chaud",
+    "english_meaning": "hot",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/ʃo/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "plage",
+    "english_meaning": "beach",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/plaʒ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "sable",
+    "english_meaning": "sand",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/sabl/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "île",
+    "english_meaning": "island",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/il/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "paradis",
+    "english_meaning": "paradise",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/paʀadi/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "cochon",
+    "english_meaning": "pig",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/kɔ.ʃɔ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "quatre",
+    "english_meaning": "four",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/katʁ/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "jambe",
+    "english_meaning": "leg",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/ʒɑ̃b/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "sale",
+    "english_meaning": "dirty",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/sal/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "creuser",
+    "english_meaning": "dig",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "[kʁø.ze]",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "sol",
+    "english_meaning": "ground, soil",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/sɔl/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "manger",
+    "english_meaning": "to eat",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "[mɑ̃ː.ˈʒe]",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "maïs",
+    "english_meaning": "corn",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ma.is/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "plante",
+    "english_meaning": "plant",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "plɑ̃t",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "famille",
+    "english_meaning": "family",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/fa.mij/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "s'asseoir",
+    "english_meaning": "to sit",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "[a.swaʁ]",
+    "type": "French Frequency Vocabulary irregular verb"
+  },
+  {
+    "id": "en bas",
+    "english_meaning": "below (down)",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/ã ba/",
+    "type": "Adverb French Frequency Vocabulary"
+  },
+  {
+    "id": "verre",
+    "english_meaning": "glass",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "vɛʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "bas",
+    "english_meaning": "low, bottom",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ba/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "bateau",
+    "english_meaning": "boat",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ba.to/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "appareil photo",
+    "english_meaning": "camera",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/a.pa.ʁɛj fɔ.to/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "photo",
+    "english_meaning": "picture",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/fɔ.to/ ou /fo to/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "mer",
+    "english_meaning": "sea",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/mɛʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "cuivre",
+    "english_meaning": "copper",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/kɥivʁ/",
+    "type": "French Frequency verb Vocabulary"
+  },
+  {
+    "id": "outil",
+    "english_meaning": "tool",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/u.ti/ m Stephanie's Hammer",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "beau",
+    "english_meaning": "handsome",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/bo/ adj IRR. -- masculine before vowel is bel",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "argile",
+    "english_meaning": "clay",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/aʁ.ʒil/ f l'argile Play with mud",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "lampe",
+    "english_meaning": "lamp",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/lɑ̃p/ female Bee lamp",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "trente",
+    "english_meaning": "thirty",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/tʁɑ̃t/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "centimètre",
+    "english_meaning": "centimeter",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/sɑ̃.ti.mɛtʁ/ m DJ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "grand",
+    "english_meaning": "large, great, grand (big, wide, high, major)",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/ɡʁɑ̃/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "hôtel",
+    "english_meaning": "hotel",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/o.tɛl/ ou /ɔ.t m Amelie",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "sept",
+    "english_meaning": "seven",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/sɛt/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "jour",
+    "english_meaning": "day",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ʒuʁ/ m",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "plastique",
+    "english_meaning": "plastic",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/plas.tik/ m",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "lit",
+    "english_meaning": "bed",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/li/ m Minecraft",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "palais de justice",
+    "english_meaning": "courthouse",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/pa.lɛ də ʒys.ti",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "avocat",
+    "english_meaning": "lawyer",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/a.vɔ.ka/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "calme",
+    "english_meaning": "calm",
+    "part_of_speech": null,
+    "gender": "m (ou adj)",
+    "pronounciation": "/kalm/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "voix",
+    "english_meaning": "voice",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/vwa/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "milliard",
+    "english_meaning": "billion",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/mi.ljaʁ/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "dollar",
+    "english_meaning": "dollar",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/dɔ.laʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "contrat",
+    "english_meaning": "contract",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/kɔ̃.tʁa/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "signer",
+    "english_meaning": "to sign",
+    "part_of_speech": null,
+    "gender": "verb",
+    "pronounciation": "[si.ɲe]",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "soir",
+    "english_meaning": "evening",
+    "part_of_speech": null,
+    "gender": "m noun",
+    "pronounciation": "[si.ɲe]",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "onze",
+    "english_meaning": "eleven",
+    "part_of_speech": null,
+    "gender": "/ɔ̃z/",
+    "pronounciation": null,
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "quinze",
+    "english_meaning": "fifteen",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/kɛ̃z/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "maison",
+    "english_meaning": "house",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "mɛ.zɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "serrure",
+    "english_meaning": "lock",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/se.ʁyʁ/ ou /sɛ.ʁyʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "dormir",
+    "english_meaning": "to sleep",
+    "part_of_speech": "in plural present take -er verb form",
+    "gender": null,
+    "pronounciation": "[dɔʁ.miʁ]",
+    "type": "French Frequency Vocabulary irregular verb"
+  },
+  {
+    "id": "cœur",
+    "english_meaning": "heart",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "kœʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "maladie",
+    "english_meaning": "disease, illness (malady)",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/ma.la.di/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "médecin",
+    "english_meaning": "doctor",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/med.sɛ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "pousser",
+    "english_meaning": "to push",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "[pu.se]",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "aiguille",
+    "english_meaning": "needle",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/e.ɡɥij/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "médicament",
+    "english_meaning": "drug, medicine",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/me.di.ka.mɑ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "chat",
+    "english_meaning": "cat",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ʃa/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "suivre",
+    "english_meaning": "to follow",
+    "part_of_speech": "p.p. : suivi irregular -- je suis, tu suis, il suit",
+    "gender": null,
+    "pronounciation": "[sɥivʁ]",
+    "type": "French Frequency Vocabulary irregular verb"
+  },
+  {
+    "id": "trois",
+    "english_meaning": "three",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "\\tʁwɑ\\",
+    "type": "French Frequency Noun Number Vocabulary"
+  },
+  {
+    "id": "aveugle",
+    "english_meaning": "blind",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/a.vœɡl/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "souris",
+    "english_meaning": "rat",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/a.vœɡl/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "papier",
+    "english_meaning": "paper",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/pa.pje/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "lettre",
+    "english_meaning": "letter",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/lɛtʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "banque",
+    "english_meaning": "bank",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/bɑ̃k/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "chef",
+    "english_meaning": "chief, leader, head (chef, manager, boss)",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "\\ʃɛf\\",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "emploi",
+    "english_meaning": "employment, job",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ɑ̃.plwa/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "oui",
+    "english_meaning": "yes",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/wiː/",
+    "type": "French Frequency Vocabulary"
+  },
+  {
+    "id": "heureux",
+    "english_meaning": "happy",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/œʀø; øz/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "homme",
+    "english_meaning": "man",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/ɔm/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "vous",
+    "english_meaning": "you (pl) you (formal)",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "\\vu\\",
+    "type": "French Frequency Vocabulary"
+  },
+  {
+    "id": "huit",
+    "english_meaning": "eight",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/ɥit/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "chaise",
+    "english_meaning": "chair",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "\\ʃɛz\\",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "restaurant",
+    "english_meaning": "restaurant",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ʁɛs.tɔ.ʁɑ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "étroit",
+    "english_meaning": "close (narrow)",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": null,
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "table",
+    "english_meaning": "table",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "\\tabl\\",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "dîner",
+    "english_meaning": "dinner",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "\\di.ne\\",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "vin",
+    "english_meaning": "wine",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "vɛ̃/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "poulet",
+    "english_meaning": "chicken",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "\\pu.lɛ\\",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "soupe",
+    "english_meaning": "soup",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "\\sup\\",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "cuillère",
+    "english_meaning": "spoon",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/kɥi.jɛʁ/",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "trente et un",
+    "english_meaning": "thirty-one",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "tʁɑ̃.t‿e œ̃/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "date",
+    "english_meaning": "date",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "\\dat\\",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "décembre",
+    "english_meaning": "December",
+    "part_of_speech": null,
+    "gender": "m noun",
+    "pronounciation": "/de.sɑ̃bʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "neige",
+    "english_meaning": "snow",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/nɛʒ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "chaussure",
+    "english_meaning": "shoe",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "\\ʃo.syʁ\\",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "aller",
+    "english_meaning": "to go",
+    "part_of_speech": "être verb",
+    "gender": null,
+    "pronounciation": null,
+    "type": "French Frequency Vocabulary irregular verb"
+  },
+  {
+    "id": "forêt",
+    "english_meaning": "forest",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "\\fɔ.ʁɛ\\",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "vent",
+    "english_meaning": "wind",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "\\vɑ̃\\",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "secouer",
+    "english_meaning": "to shake",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "\\sə.kwe\\",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "mince",
+    "english_meaning": "thin, slim",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/mɛ̃s/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "feuille",
+    "english_meaning": "sheet, leaf",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/fœj/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "jeter",
+    "english_meaning": "to throw",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "\\ʒə.te\\",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "octobre",
+    "english_meaning": "October",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "\\ɔk.tɔbʁ\\",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "jeudi",
+    "english_meaning": "Thursday",
+    "part_of_speech": "/ʒø.di/",
+    "gender": "m",
+    "pronounciation": null,
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "deux",
+    "english_meaning": "two",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/dø/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "équipe",
+    "english_meaning": "team",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "/e.kip/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "vingt-deux",
+    "english_meaning": "twenty-two",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/vɛ̃t.dø/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "joueur",
+    "english_meaning": "player",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ʒwœʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "ballon",
+    "english_meaning": "ball, balloon",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ba.lɔ̃/, /bal/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "supporter",
+    "english_meaning": "supporter",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/sy.pɔʁ.tɛʁ/",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "battre",
+    "english_meaning": "to beat (fight, whip, whisk)",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "\\batʁ\\",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "cheval",
+    "english_meaning": "horse",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ʃə.val",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "fort",
+    "english_meaning": "strong",
+    "part_of_speech": null,
+    "gender": "m, ou adj",
+    "pronounciation": "/fɔʁ/",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "tirer",
+    "english_meaning": "to pull",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ti.ʁe",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "lourd",
+    "english_meaning": "heavy",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "luʁ",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "boîte",
+    "english_meaning": "box",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "bwat",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "horloge",
+    "english_meaning": "clock",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ɔʁ.lɔʒ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "neuf",
+    "english_meaning": "nine",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/nœf/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "quarante",
+    "english_meaning": "forty",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/ka.ʁɑ̃t/",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "matin",
+    "english_meaning": "morning",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ma.tɛ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "soleil",
+    "english_meaning": "sun",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/sɔ.lɛj/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "lumière",
+    "english_meaning": "light",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ly.mjɛʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "café",
+    "english_meaning": "coffee",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ka.fe",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "nez",
+    "english_meaning": "nose",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ne",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "sentir",
+    "english_meaning": "to feel",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "sɑ̃.tiʁ",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "devant",
+    "english_meaning": "before (in front)",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "də.vɑ̃",
+    "type": "Adverb French Frequency Vocabulary"
+  },
+  {
+    "id": "salle de bain",
+    "english_meaning": "bathroom",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "sal də bɛ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "fenêtre",
+    "english_meaning": "window",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "fə.nɛtʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "voir",
+    "english_meaning": "to see",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "vwaʁ",
+    "type": "French Frequency Vocabulary irregular verb"
+  },
+  {
+    "id": "œil",
+    "english_meaning": "eye",
+    "part_of_speech": "pl. des yeux",
+    "gender": "m",
+    "pronounciation": "oej",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "jardin",
+    "english_meaning": "garden",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ʒaʁ.dɛ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "haut",
+    "english_meaning": "high",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "o",
+    "type": "Adverb French Frequency Vocabulary"
+  },
+  {
+    "id": "lune",
+    "english_meaning": "moon",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "\\lyn\\",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "sauter",
+    "english_meaning": "to jump",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": null,
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "printemps",
+    "english_meaning": "spring",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pʁɛ̃.tɑ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "relations sexuelles",
+    "english_meaning": "sexual relations",
+    "part_of_speech": null,
+    "gender": "M",
+    "pronounciation": "ʀəlatjɔ̃ sεksɥεl",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "dix-huit",
+    "english_meaning": "eighteen",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "di.z_ɥit",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "panneau",
+    "english_meaning": "sign",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pa.no",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "ample",
+    "english_meaning": "wide, ample, large",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ɑ̃pl",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "dîner",
+    "english_meaning": "dinner",
+    "part_of_speech": null,
+    "gender": "m (ou verbe)",
+    "pronounciation": "di.ne",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "cuillère",
+    "english_meaning": "spoon",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "kɥi.jɛʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "attraper",
+    "english_meaning": "catch",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "a.tʁa.pe",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "six",
+    "english_meaning": "six",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "sis",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "kilogramme",
+    "english_meaning": "kilogram",
+    "part_of_speech": null,
+    "gender": "m noun",
+    "pronounciation": "ki.lo.ɡʁam",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "laid",
+    "english_meaning": "ugly",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "lɛ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "plat",
+    "english_meaning": "flat",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "pla",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "poisson",
+    "english_meaning": "fish",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pwa.sɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "tu",
+    "english_meaning": "you (informal)",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ty",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "apprendre",
+    "english_meaning": "to learn",
+    "part_of_speech": "conjugate like prendre, plural loses -d, ils apprennent",
+    "gender": "a.pʁɑ̃dʁ",
+    "pronounciation": "a.pʁɑ̃dʁ",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "doigt",
+    "english_meaning": "finger",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "dwa",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "ordinateur",
+    "english_meaning": "computer",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ɔʁ.di.na.toeʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "programme",
+    "english_meaning": "program",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pʁɔ.ɡʁam",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "technologie",
+    "english_meaning": "technology",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "tɛk.nɔ.lɔ.ʒi",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "je",
+    "english_meaning": "I",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ʒə",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "cuisiner",
+    "english_meaning": "to cook",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "kɥi.zi.ne",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "œuf",
+    "english_meaning": "egg",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "oef",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "petit déjeuner",
+    "english_meaning": "breakfast",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pə.ti de.ʒoe.ne",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "cuisine",
+    "english_meaning": "kitchen",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "kɥi.zin",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "bon",
+    "english_meaning": "good",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "bɔ̃",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "tasse",
+    "english_meaning": "cup (mug)",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "tɑs",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "orange",
+    "english_meaning": "orange",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ɔ.ʁɑ̃ʒ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "jus",
+    "english_meaning": "juice",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ʒy",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "gare",
+    "english_meaning": "train station",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ɡaʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "drogue",
+    "english_meaning": "drug",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "dʁɔɡ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "payer",
+    "english_meaning": "to pay",
+    "part_of_speech": "-ayer conjugation, y turns to i except in nous/vous. j'paie",
+    "gender": null,
+    "pronounciation": "pe.je",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "prison",
+    "english_meaning": "prison",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "pʁi.zɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "douze",
+    "english_meaning": "twelve",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "duz",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "mois",
+    "english_meaning": "month",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "mwa",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "température",
+    "english_meaning": "temperature",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "tɑ̃.pe.ʁa.tyʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "sec",
+    "english_meaning": "dry",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "sɛk",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "été",
+    "english_meaning": "summer",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "e.te",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "sueur",
+    "english_meaning": "sweat",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "sɥoeʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "piscine",
+    "english_meaning": "pool",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "pi.sin",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "nature",
+    "english_meaning": "nature",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "na.tyʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "chanter",
+    "english_meaning": "to sing",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ʃɑ̃.te",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "jaune",
+    "english_meaning": "yello",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ʒon",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "oiseau",
+    "english_meaning": "bird",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "wa.zo",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "aile",
+    "english_meaning": "wing",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ɛl",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "arbre",
+    "english_meaning": "tree",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "aʁbʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "bois",
+    "english_meaning": "wood",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "bwɑ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "épais",
+    "english_meaning": "thick",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "e.pɛ",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "racine",
+    "english_meaning": "root",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ʁa.sin",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "treize",
+    "english_meaning": "thirteen",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "tʁɛz",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "bâtiment",
+    "english_meaning": "building",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": null,
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "étage",
+    "english_meaning": "floor (level, story)",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "e.taʒ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "passer",
+    "english_meaning": "to pass, (place, go, transmit)",
+    "part_of_speech": "être verb",
+    "gender": null,
+    "pronounciation": "pa.se",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "dessiner",
+    "english_meaning": "to draw",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "de.si.ne",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "stylo",
+    "english_meaning": "pen",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "sti.lo",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "image",
+    "english_meaning": "image",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "i.maʒ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "pendre",
+    "english_meaning": "to hang",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "pɑ̃dʁ",
+    "type": "French Frequency Vocabulary irregular verb"
+  },
+  {
+    "id": "mur",
+    "english_meaning": "wall",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "myʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "art",
+    "english_meaning": "art",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "aʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "trou",
+    "english_meaning": "hole",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "tʁu",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "jeu",
+    "english_meaning": "game",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ʒø",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "jouer",
+    "english_meaning": "to play",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ʒwe",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "vert",
+    "english_meaning": "green",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "vɛʁ",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "perdre",
+    "english_meaning": "to lose (something), misplace, to lose (weight)",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "pɛʁdʁ",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "main",
+    "english_meaning": "hand",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "mɛ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "masculin",
+    "english_meaning": "masculine",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "mas.ky.lɛ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "film",
+    "english_meaning": "film",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "film",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "garçon",
+    "english_meaning": "boy",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ɡaʁ.sɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "morceau",
+    "english_meaning": "piece",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "mɔʁ.so",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "citron",
+    "english_meaning": "lemon",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "si.tʁɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "sucre",
+    "english_meaning": "sugar",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "sykʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "gâteau",
+    "english_meaning": "cake",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ɡɑ.to",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "assiette",
+    "english_meaning": "plate",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "a.sjɛt",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "dix-sept",
+    "english_meaning": "seventeen",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "dis.sɛt",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "mercredi",
+    "english_meaning": "wednesday",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "mɛʁ.kʁə.di",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "marché",
+    "english_meaning": "market",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "maʁ.ʃe",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "nourriture",
+    "english_meaning": "food",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "nu.ʁi.tyʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "déjeuner",
+    "english_meaning": "lunch",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "de.ʒoe.ne",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "pain",
+    "english_meaning": "bread",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pɛ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "bœuf",
+    "english_meaning": "beef",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "boef",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "banane",
+    "english_meaning": "banana",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ba.nan",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "épaule",
+    "english_meaning": "shoulder",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "e.pol",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "sac",
+    "english_meaning": "bag",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "sak",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "gauche",
+    "english_meaning": "left",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ɡoʃ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "côté",
+    "english_meaning": "coast",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ko.te",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "lever",
+    "english_meaning": "lift, raise",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "lə.ve",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "chambre",
+    "english_meaning": "room, bedroom",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ʃɑ̃bʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "plafond",
+    "english_meaning": "roof",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pla.fɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "ventilateur",
+    "english_meaning": "fan",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "vɑ̃.ti.la.toeʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "temps",
+    "english_meaning": "time",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "tɑ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "seize",
+    "english_meaning": "sixteen",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "sɛz",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "avion",
+    "english_meaning": "plane",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "a.vjɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "billet",
+    "english_meaning": "ticket",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "bi.jɛ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "Intérieur",
+    "english_meaning": "inside (internal)",
+    "part_of_speech": null,
+    "gender": "m (ou adj)",
+    "pronounciation": "ɛ̃.te.ʁjoeʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "droit",
+    "english_meaning": "straight",
+    "part_of_speech": null,
+    "gender": "adv",
+    "pronounciation": null,
+    "type": "Adverb French Frequency Vocabulary"
+  },
+  {
+    "id": "derrière",
+    "english_meaning": "behind",
+    "part_of_speech": null,
+    "gender": "adv (ou m)",
+    "pronounciation": null,
+    "type": "Adverb French Frequency Vocabulary"
+  },
+  {
+    "id": "portable",
+    "english_meaning": "cell phone",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pɔʁ.tabl",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "réseau",
+    "english_meaning": "network",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ʁe.zo",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "quatre-vingt-dix",
+    "english_meaning": "ninety",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ka.trə.vɛ̃ dis",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "minute",
+    "english_meaning": "minute",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "mi.nyt",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "appeler",
+    "english_meaning": "to call",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "a.pə.le",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "ami",
+    "english_meaning": "friend",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "a.mi",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "rire",
+    "english_meaning": "to laugh",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ʁiʁ",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "sœur",
+    "english_meaning": "sister",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "soeʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "nager",
+    "english_meaning": "to swim",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "na.ʒe",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "lac",
+    "english_meaning": "lake",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "lak",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "eau",
+    "english_meaning": "water",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "o",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "voisin",
+    "english_meaning": "neighbor",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "vwa.zɛ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "construire",
+    "english_meaning": "to build",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "kɔ̃.stʁy.iʁ",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "quatre-vingt-un",
+    "english_meaning": "eighty-one",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ka.trə.vɛ̃.toẽ",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "carré",
+    "english_meaning": "square",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ka.ʁe",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "mètre",
+    "english_meaning": "meter",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "mɛtʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "peinture",
+    "english_meaning": "painting, paint",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "pɛ̃.tyʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "frère",
+    "english_meaning": "brother",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": null,
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "soixante",
+    "english_meaning": "sixty",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "swa.sɑ̃t",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "seconde",
+    "english_meaning": "second",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "sə.ɡɔ̃d",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "colline",
+    "english_meaning": "hill",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "kɔ.lin",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "course",
+    "english_meaning": "race",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "kuʁs",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "courir",
+    "english_meaning": "to run",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ku.ʁiʁ",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "rapide",
+    "english_meaning": "fast, quick",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ʁa.pid",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "samedi",
+    "english_meaning": "Saturday",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "sam.di",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "bar",
+    "english_meaning": "bar",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "baʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "vingt et un",
+    "english_meaning": "twenty-one",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "vɛ̃.t_e oẽ",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "bière",
+    "english_meaning": "beer",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "bjɛʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "bouteille",
+    "english_meaning": "bottle",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "bu.tɛj",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "mal",
+    "english_meaning": "bad",
+    "part_of_speech": null,
+    "gender": "adj ou adv",
+    "pronounciation": "mal",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "étudiant",
+    "english_meaning": "student",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "e.ty.djɑ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "université",
+    "english_meaning": "university",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "y.ni.vɛʁ.si.te",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "race",
+    "english_meaning": "race (ethnicity)",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ʁas",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "peau",
+    "english_meaning": "skin",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "po",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "couleur",
+    "english_meaning": "color",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ku.loeʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "humain",
+    "english_meaning": "human",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "y.mɛ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "lutter",
+    "english_meaning": "fight",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ly.te",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "triste",
+    "english_meaning": "sad",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "tʁist",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "sympathique",
+    "english_meaning": "sympathetic",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "sɛ̃.pa.tik",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "secrétaire",
+    "english_meaning": "secretary",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "sə.kʁe.tɛʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "extérieur",
+    "english_meaning": "exterier",
+    "part_of_speech": null,
+    "gender": "m ou adj",
+    "pronounciation": "ɛk.ste.ʁjoeʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "bureau",
+    "english_meaning": "office (desk)",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "by.ʁo",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "bus",
+    "english_meaning": "bus",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": null,
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "soixante-deux",
+    "english_meaning": "sixty-two",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "swa.sɑ̃t dø",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "bibliothèque",
+    "english_meaning": "library",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "bi.bli.jɔ.tɛk",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "carte",
+    "english_meaning": "card, map",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "kaʁt",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "clair",
+    "english_meaning": "clear, light",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "klɛʁ",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "bleu",
+    "english_meaning": "blue",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "blø",
+    "type": "Adj French Frequency Vocabulary"
+  },
+  {
+    "id": "chemise",
+    "english_meaning": "shirt",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ʃə.miz",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "policier",
+    "english_meaning": "police officer",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pɔ.li.sje",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "pistolet",
+    "english_meaning": "gun, pistol",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pis.tɔ.lɛ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "tirer",
+    "english_meaning": "to shoot",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ti.ʁe",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "meurtre",
+    "english_meaning": "murder",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "moeʁtʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "enseignant",
+    "english_meaning": "teacher",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ɑ̃.sɛ.ɲɑ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "école",
+    "english_meaning": "school",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "e.kɔl",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "cinquante",
+    "english_meaning": "fifty",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "sɛ̃.kɑ̃t",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "moitié",
+    "english_meaning": "half",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "mwa.ti",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "cent",
+    "english_meaning": "one hundred",
+    "part_of_speech": "sɑ̃",
+    "gender": null,
+    "pronounciation": null,
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "enseigner",
+    "english_meaning": "to teach",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ɑ̃.se.ɲe",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "enfant",
+    "english_meaning": "child",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ɑ̃.fɑ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "crayon",
+    "english_meaning": "pencil, crayon",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "kʁɛ.jɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "note",
+    "english_meaning": "note (grade, notice, mark, annotation)",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "nɔt",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "rêve",
+    "english_meaning": "dream",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ʁɛv",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "sourire",
+    "english_meaning": "to smile",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "su.ʁiʁ",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "reine",
+    "english_meaning": "queen",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ʁɛn",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "genre",
+    "english_meaning": "gender",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ʒɑ̃ʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "féminin",
+    "english_meaning": "feminine",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "feminɛ̃",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "or (n)",
+    "english_meaning": "gold",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ɔʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "tête",
+    "english_meaning": "head",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "tɛt",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "riche",
+    "english_meaning": "rich",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ʁiʃ",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "auteur",
+    "english_meaning": "author",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "o.toeʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "cinquante-deux",
+    "english_meaning": "fifty-two",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "sɛ̃.kɑ̃t dø",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "semaine",
+    "english_meaning": "week",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "sə.mɛn",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "écrire",
+    "english_meaning": "to write",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "e.kʁiʁ",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "mille",
+    "english_meaning": "one thousand",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "mil",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "page",
+    "english_meaning": "page",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "paʒ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "livre",
+    "english_meaning": "book",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "livʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "boîte de nuit",
+    "english_meaning": "nightclub",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "bwat də nɥi",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "lent",
+    "english_meaning": "slow",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": null,
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "musique",
+    "english_meaning": "music",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "my.zik",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "écouter",
+    "english_meaning": "to listen",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "e.ku.te",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "instrument",
+    "english_meaning": "instrument",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ɛ̃s.tʁy.mɑ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "lundi",
+    "english_meaning": "Monday",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "lœ̃ .di",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "train",
+    "english_meaning": "train",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "tʁɛ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "quatre-vingt-deux",
+    "english_meaning": "eighty-two",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ka.trə.vɛ̃ dø",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "est",
+    "english_meaning": "west",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "wɛst",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "direction",
+    "english_meaning": "direction",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "di.ʁɛk.sjɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "pauvre",
+    "english_meaning": "poor",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "povʁ",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "mère",
+    "english_meaning": "mother",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "mɛʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "travailler",
+    "english_meaning": "to work",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "tʁa.va.je",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "grande ville",
+    "english_meaning": "city",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "gʁɑ̃d vil",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "science",
+    "english_meaning": "science",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "sjɑ̃s",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "magazine",
+    "english_meaning": "magazine",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ma.ga.zin",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "cerveau",
+    "english_meaning": "brain",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "sɛʁ.vo",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "penser",
+    "english_meaning": "to think",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "pɑ̃.se",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "nucléaire",
+    "english_meaning": "nuclear",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ny.kle.ɛʁ",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "chaleur",
+    "english_meaning": "heat",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ʃa.loeʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "énergie",
+    "english_meaning": "energy",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "e.nɛʁ.ʒi",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "essence",
+    "english_meaning": "gas",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "e.sɑ̃s",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "moteur",
+    "english_meaning": "motor",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "mɔ.toeʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "voiture",
+    "english_meaning": "car",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "vwa.tyʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "transport",
+    "english_meaning": "transportation",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "tʁɑ̃s.pɔʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "conduire",
+    "english_meaning": "to drive",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "kɔ̃.dɥiʁ",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "pont",
+    "english_meaning": "bridge",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "tourner",
+    "english_meaning": "to turn",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "tuʁ.ne",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "droite",
+    "english_meaning": "right",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "dʁwat",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "arrêter",
+    "english_meaning": "to stop (halt, interrupt)",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "a.ʁe.te",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "soixante-douze",
+    "english_meaning": "seventy-two",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "swa.sɑ̃t duz",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "heure",
+    "english_meaning": "hour",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "oeʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "nettoyer",
+    "english_meaning": "to clean",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ne.twa.je",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "manteau",
+    "english_meaning": "coat",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "mɑ̃.to",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "sang",
+    "english_meaning": "blood",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "sɑ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "tache",
+    "english_meaning": "stain",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "taʃ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "cher",
+    "english_meaning": "expensive",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ʃɛʁ",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "facture",
+    "english_meaning": "bill",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "fak.tyʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "vallée",
+    "english_meaning": "valley",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "va.le",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "ferme",
+    "english_meaning": "farm",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "fɛʁm",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "nourrir",
+    "english_meaning": "to feed",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "nu.ʁiʁ",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "vache",
+    "english_meaning": "cow",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "vaʃ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "lait",
+    "english_meaning": "milk",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "lɛ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "mélanger",
+    "english_meaning": "to mix",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "me.lɑ̃.ʒe",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "fromage",
+    "english_meaning": "cheese",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "fʁɔ.maʒ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "nous",
+    "english_meaning": "us",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": null,
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "quatrième",
+    "english_meaning": "fourth",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ka.tʁi.jɛm",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "juillet",
+    "english_meaning": "July",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ʒɥi.jɛ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "entendre",
+    "english_meaning": "to hear",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ɑ̃.tɑ̃dʁ",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "rouge",
+    "english_meaning": "red",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ʁuʒ",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "exploser",
+    "english_meaning": "to explode",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ɛk.splo.ze",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "mari",
+    "english_meaning": "husband",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ma.ʁi",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "visage",
+    "english_meaning": "face",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "vi.zaʒ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "barbe",
+    "english_meaning": "beard",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "baʁb",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "dix mille",
+    "english_meaning": "ten thousand",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "di mil",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "court",
+    "english_meaning": "short",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "kuʁ",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "noir",
+    "english_meaning": "black",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "nwaʁ",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "cheveux",
+    "english_meaning": "hair",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ʃə.vø",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "Lèvre",
+    "english_meaning": "lips",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "lɛvʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "dent",
+    "english_meaning": "tooth",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "dɑ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "parler",
+    "english_meaning": "to speak",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "paʁ.le",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "consonne",
+    "english_meaning": "consonent",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "kɔ̃.sɔn",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "son",
+    "english_meaning": "sound",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "sɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "quatorze",
+    "english_meaning": "fourteen",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ka.tɔʁz",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "quatre-vingt-douze",
+    "english_meaning": "ninety-two",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ka.trə.vɛ̃ duz",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "trouver",
+    "english_meaning": "to find",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "tʁu.ve",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "pays",
+    "english_meaning": "country",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pe.i",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "profond",
+    "english_meaning": "deep",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "pʁɔ.fɔ̃",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "océan",
+    "english_meaning": "ocean",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ɔ.se.ɑ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "vague",
+    "english_meaning": "wave",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "vaɡ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "non",
+    "english_meaning": "no",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "nɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "bord",
+    "english_meaning": "border",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "bɔʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "monde",
+    "english_meaning": "world",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "mɔ̃d",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "goûter",
+    "english_meaning": "to taste",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "gu.te",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "sel",
+    "english_meaning": "salt",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "sɛl",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "huile",
+    "english_meaning": "oil",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ɥil",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "porc",
+    "english_meaning": "pork",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pɔʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "soixante et un",
+    "english_meaning": "sixty-one",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "swa.sɑ̃t_e oẽ",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "rue",
+    "english_meaning": "street",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ʁy",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "coin",
+    "english_meaning": "coin",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "kwɛ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "église",
+    "english_meaning": "church",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "e.ɡliz",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "prêtre",
+    "english_meaning": "priest",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pʁɛtʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "se marier",
+    "english_meaning": "to marry",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ma.ʁje",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "grand-père",
+    "english_meaning": "grandfather",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ɡʁɑ̃.pɛʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "chapeau",
+    "english_meaning": "hat",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ʃa.po",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "costume",
+    "english_meaning": "suit (costume)",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "kɔs.tym",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "Français",
+    "english_meaning": "Français - personne de France français - French language, related to France",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": null,
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "genou",
+    "english_meaning": "knee",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ʒə.nu",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "prier",
+    "english_meaning": "pray",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "pʁi.je",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "faible",
+    "english_meaning": "weak (feeble, fragile)",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "fɛbl",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "Dieu",
+    "english_meaning": "God",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "djø",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "paix",
+    "english_meaning": "peace",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "pɛ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "journal",
+    "english_meaning": "newspaper",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ʒuʁ.nal",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "reporter",
+    "english_meaning": "reporter",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ʁə.pɔʁ.tɛʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "métal",
+    "english_meaning": "metal",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "me.tal",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "navire",
+    "english_meaning": "ship",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "na.viʁ",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "brûler",
+    "english_meaning": "to burn",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "bʁy.le",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "dix-neuf",
+    "english_meaning": "nineteen",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "diz.noef",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "quarante et un",
+    "english_meaning": "forty-one",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ka.ʁɑ̃.t_e oẽ",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "guerre",
+    "english_meaning": "war",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ɡɛʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "argent",
+    "english_meaning": "silver",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "aʁ.ʒɑ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "matière",
+    "english_meaning": "matter, stuff, subject",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ma.tjɛʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "ordinateur portable",
+    "english_meaning": "laptop",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ɔʀdinatoeʀ pɔʀtabl",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "fermer",
+    "english_meaning": "to lock",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "fɛʁ.me",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "mai",
+    "english_meaning": "May",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "mɛ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "cinquième",
+    "english_meaning": "fifth",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "sɛ̃.kjɛm",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "graine",
+    "english_meaning": "seed",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ɡʁɛn",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "grandir",
+    "english_meaning": "to grow",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ɡʁɑ̃.diʁ",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "rose",
+    "english_meaning": null,
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ʁoz",
+    "type": "Adj French Frequency Vocabulary"
+  },
+  {
+    "id": "fleur",
+    "english_meaning": "flower",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "floeʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "couper",
+    "english_meaning": "to cut",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ku.pe",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "automne",
+    "english_meaning": "automn",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "o.tɔn",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "saison",
+    "english_meaning": "season",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "sɛ.zɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "Septembre",
+    "english_meaning": "September",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "sɛp.tɑ̃bʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "camp",
+    "english_meaning": "camp, campsite",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "kɑ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "fille",
+    "english_meaning": "girl, daughter",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "fij",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "se réveiller",
+    "english_meaning": "to wake",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ʁe.vɛ.je",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "mou",
+    "english_meaning": "soft",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "mu",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "herbe",
+    "english_meaning": "grass",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ɛʁb",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "orteil",
+    "english_meaning": "toe",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ɔʁ.tɛj",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "clé",
+    "english_meaning": "key",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "kle",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "appartement",
+    "english_meaning": "apartment",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "a.paʁ.tə.mɑ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "porte",
+    "english_meaning": "door",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "pɔʁt",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "cent onze",
+    "english_meaning": "one hundred eleven",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "sɑ̃̃ tɔ̃z",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "ils",
+    "english_meaning": "they",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "il",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "habiter",
+    "english_meaning": "to live",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "a.bi.te",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "célèbre",
+    "english_meaning": "famous",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "se.lɛbʁ",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "groupe musical",
+    "english_meaning": "band",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ɡʁup my.zi.kal",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "radio",
+    "english_meaning": "top",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ʁa.djo",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "chanson",
+    "english_meaning": "song",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ʃɑ̃.sɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "cent mille",
+    "english_meaning": "one hundred thousand",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "sɑ̃ mil",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "personne",
+    "english_meaning": "person",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "pɛʁ.sɔn",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "foule",
+    "english_meaning": "crowd",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ful",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "danser",
+    "english_meaning": "to danse",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "dɑ̃.se",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "méchant",
+    "english_meaning": "mean",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "me.ʃɑ̃",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "tuer",
+    "english_meaning": "to kill",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "tɥe",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "fils",
+    "english_meaning": "son",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "fis",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "couteau",
+    "english_meaning": "knife",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ku.to",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "enfer",
+    "english_meaning": "hell",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ɑ̃.fɛʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "feu",
+    "english_meaning": "fire",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "fø",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "religion",
+    "english_meaning": "religion",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ʁə.li.ʒjɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "soixante-onze",
+    "english_meaning": "seventy one",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "swa.sɑ̃t ɔ̃z",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "victime",
+    "english_meaning": "victim",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "vik.tim",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "poison",
+    "english_meaning": "poison",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pwa.zɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "thé",
+    "english_meaning": "tea",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "te",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "mourir",
+    "english_meaning": "to die",
+    "part_of_speech": "être verbe",
+    "gender": null,
+    "pronounciation": "mu.ʁiʁ",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "toit",
+    "english_meaning": "patient",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "twa",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "vieux",
+    "english_meaning": "old",
+    "part_of_speech": "fem. vieille / irr: masculine before vowel is vieil",
+    "gender": null,
+    "pronounciation": "vjø",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "malade",
+    "english_meaning": "sick",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ma.lad",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "grand-mère",
+    "english_meaning": "grandmother",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "ɡʁɑ̃.mɛʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "laver",
+    "english_meaning": "to wash",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "la.ve",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "savon",
+    "english_meaning": "soap",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "sa.vɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "propre",
+    "english_meaning": "clean",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "pʁɔpʁ",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "patient",
+    "english_meaning": "patient",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pa.sjɑ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "blessure",
+    "english_meaning": "injury",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "blesyʀ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "casser",
+    "english_meaning": "break",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ka.se",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "os",
+    "english_meaning": "bone",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ɔs",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "hôpital",
+    "english_meaning": "hospital",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ɔ.pi.tal",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "salle",
+    "english_meaning": "room",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "sal",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "quarante-deux",
+    "english_meaning": "forty-two",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ka.ʁɑ̃t dø",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "plier",
+    "english_meaning": "to bend",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "pli.je",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "langue",
+    "english_meaning": "tongue",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "lɑ̃ɡ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "ouvrir",
+    "english_meaning": "to open",
+    "part_of_speech": "acts as -er verb in present tense",
+    "gender": "u.vʁiʁ",
+    "pronounciation": "u.vʁiʁ",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "bouche",
+    "english_meaning": "mouth",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "buʃ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "voyelle",
+    "english_meaning": "vowel",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "vwa.jɛl",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "cent dix",
+    "english_meaning": "one hundred ten",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "sɑ̃ dis",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "livre",
+    "english_meaning": "pound",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "livʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "léger",
+    "english_meaning": "light",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "le.ʒe",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "soldat",
+    "english_meaning": "brown",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "sɔl.da",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "brun",
+    "english_meaning": "brown",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "bʁoẽ",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "poussière",
+    "english_meaning": "dust",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "pu.sjɛʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "pattern",
+    "english_meaning": "pattern",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ˈpætn",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "tee-shirt",
+    "english_meaning": "t-shirt",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "ti.ʃoeʁt",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "père",
+    "english_meaning": "father",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pɛʁ",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "regarder",
+    "english_meaning": "to watch",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "ʁə.ɡaʁ.de",
+    "type": "French Frequency Vocabulary verb"
+  },
+  {
+    "id": "trente-deux",
+    "english_meaning": "thirty-two",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "tʁɑ̃t dø",
+    "type": "French Frequency Number Vocabulary"
+  },
+  {
+    "id": "pouce",
+    "english_meaning": "thumb (inch)",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "pus",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "télévision",
+    "english_meaning": "television",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "te.le.vi.zjɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "large",
+    "english_meaning": "wide (broad)",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "laʁʒ",
+    "type": "Adjective French Frequency Vocabulary"
+  },
+  {
+    "id": "écran",
+    "english_meaning": "screen",
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "e.kʁɑ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "boire",
+    "english_meaning": "to drink",
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "bwaːʁ",
+    "type": "French Frequency Vocabulary irregular verb"
+  },
+  {
+    "id": "boisson",
+    "english_meaning": "beverage",
+    "part_of_speech": null,
+    "gender": "f",
+    "pronounciation": "bwa.sɔ̃",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "ouvrier",
+    "english_meaning": null,
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/u.vʁi.je/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "instituteur",
+    "english_meaning": null,
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": "/ɛs.ti.ty.tœʁ/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "directeur",
+    "english_meaning": null,
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": null,
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "tourisme",
+    "english_meaning": null,
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": null,
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "voyage",
+    "english_meaning": null,
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": null,
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "un",
+    "english_meaning": null,
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": null,
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "une",
+    "english_meaning": null,
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/ Yn /",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "le",
+    "english_meaning": null,
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/lə/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "la",
+    "english_meaning": null,
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/la/",
+    "type": "French Frequency Noun Vocabulary"
+  },
+  {
+    "id": "des",
+    "english_meaning": null,
+    "part_of_speech": null,
+    "gender": null,
+    "pronounciation": "/de/",
+    "type": "French"
+  },
+  {
+    "id": "chou",
+    "english_meaning": null,
+    "part_of_speech": null,
+    "gender": "m",
+    "pronounciation": null,
+    "type": "French Frequency Noun Vocabulary"
+  }
+]
+
+
+alert(essf)
+var ess = db.collection("wordlist_fr").doc("all").collection("essential_french");
+      
+      $("#populate").click(function(){
+        alert("essf.length " + essf.length)
+        for(i=0;i<essf.length;i++){
+          ess.doc(essf[i]["id"]).set(essf[i])
+          // alert(essf[i]["id"]);、
+          if(i==essf.length)
+          {
+            alert("done"+ i)
+          }
+        }
+        })
+        
+//   for(i=0;i<essf.length;i++)
+// {
+//   alert(essf[i][0]);
+//   ess.doc(essf[i]).set(essf[i][0])
+// }
+
+    
+    </script>
+  </body>
+</html>
